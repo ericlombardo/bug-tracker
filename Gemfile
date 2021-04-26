@@ -33,6 +33,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Call 'binding.pry' to enter into pry session for debugging
   gem 'pry'
+  # Allow for ENV variables to be set for secrets and keys (put in .gitignore)
+  gem 'dotenv-rails'
 end
 
 group :development do
