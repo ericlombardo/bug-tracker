@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_04_26_175355) do
 
   create_table "bugs", force: :cascade do |t|
-    t.string "type"
+    t.string "category"
     t.string "priority"
     t.string "status"
     t.string "overview"

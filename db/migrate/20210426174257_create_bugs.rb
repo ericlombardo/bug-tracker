@@ -1,7 +1,7 @@
 class CreateBugs < ActiveRecord::Migration[6.1]
   def change
     create_table :bugs do |t|
-      t.string :type
+      t.string :category
       t.string :priority
       t.string :status
       t.string :overview
