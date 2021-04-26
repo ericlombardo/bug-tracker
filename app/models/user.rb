@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include ScopeMethods  # pulls in scope methods from app/models/concerns
+  
   has_secure_password
 
   # associations
@@ -6,6 +8,4 @@ class User < ApplicationRecord
   has_many :programs, through: :programs_users
   has_many :bugs, through: :programs
 
-  # Scope method to sort user names alphabetically
-  scope :alpha_users, -> { order(:name) }
 end
