@@ -1,0 +1,32 @@
+<br><br><br>
+<%= form_with method: @bug do |f| %>  <!-- build bug form with needed attributes-->
+  <%= f.label :category %>
+  <%= f.text_field :category %>
+  <br>
+  <%= f.label :priority %>
+  <%= f.text_field :priority %>
+  <br>
+  <%= f.label :status %>
+  <%= f.text_field :status %>
+  <br>
+  <%= f.label :overview %><br>
+  <%= f.text_area :overview %>
+  <br>
+  <%= f.label :description %><br>
+  <%= f.text_area :description %>
+  <br>
+  <%= f.label :notes %><br>
+  <%= f.text_area :notes %>
+  <br>
+  <%= f.label :next_steps %><br>
+  <%= f.text_area :next_steps %>
+  <br>
+  <%= f.label :update_for_client %><br>
+  <%= f.text_area :update_for_client %>
+  <br>
+  <!-- DO NOT INCLUDE IN UPDATE FORM -->
+  <!-- sets created date to the current date for logging purposes -->
+  <%= f.hidden_field :created, value: Date.current %>
+
+  <%= f.submit %>
+<% end %>
