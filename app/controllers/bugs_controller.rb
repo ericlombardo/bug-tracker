@@ -1,4 +1,14 @@
 class BugsController < ApplicationController
+  def index
+    if params[:program_id]
+      @prog = Program.find_by(id: params[:program_id])
+      @bugs = @prog.bugs
+    else
+      # message about selecting a program before reporting a bug
+      redirect_to programs_path
+    end
+  end
+
   def new
     if params[:program_id]
       @prog = Program.find_by(id: params[:program_id])
