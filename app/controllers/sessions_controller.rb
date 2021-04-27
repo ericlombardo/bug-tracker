@@ -13,12 +13,14 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy # check for right user, redirect of not
+    session.delete :user_id
+    redirect_to login_path
+  end
+ 
   private
 
   def session_params
     params.require(:user).permit(:email, :password)
   end 
-end
-
-# found article on dev.to on how to show message for displaying (create actions)
 end
