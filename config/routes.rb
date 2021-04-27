@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users
   resources :bugs
   resources :programs do
-    resources :bugs, only: [:new, :index]
+    resources :bugs
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
