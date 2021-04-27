@@ -1,5 +1,5 @@
 <br><br><br>
-<%= form_with method: @bug do |f| %>  <!-- build bug form with needed attributes-->
+<%= form_with model: ([@prog, @bug]) do |f| %>  <!-- build bug form with needed attributes-->
   <%= f.label :category %>
   <%= f.text_field :category %>
   <br>
@@ -27,6 +27,6 @@
   <!-- DO NOT INCLUDE IN UPDATE FORM -->
   <!-- sets created date to the current date for logging purposes -->
   <%= f.hidden_field :created, value: Date.current %>
-
-  <%= f.submit %>
+  <%= f.hidden_field :program_id, value: @prog.id %>
+  <%= f.submit "Report Bug" %>
 <% end %>
