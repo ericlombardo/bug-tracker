@@ -29,7 +29,7 @@
       </thead>
       <% @prj_managers.each do |pm| %>
         <tr>
-          <td><input type="checkbox" name="team[:pm_ids][]" value="<%= pm.id %>"></td>
+          <td><input type="checkbox" name="team[pm_ids][]" value="<%= pm.id %>"></td>
           <td><%= pm.name%></td>
           <td><%= pm.email%></td>
         </tr>
@@ -49,12 +49,12 @@
       </thead>
       <% @devs.each do |dev| %>
         <tr>
-          <td><input type="checkbox" name="team[:dev_ids][]" value="<%= dev.id %>"></td>
+          <td><input type="checkbox" name="team[dev_ids][]" value="<%= dev.id %>"></td>
           <td><%= dev.name%></td>
           <td><%= dev.email%></td>
         </tr>
       <% end %>
     </table>
   </div>
-
+  <%= f.submit "Create Project" %>
 <% end %>

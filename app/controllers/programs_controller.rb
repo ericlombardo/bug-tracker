@@ -13,4 +13,8 @@ class ProgramsController < ApplicationController
     @devs = User.get_devs # collect all users where role == "dev"
     @prj_managers = User.get_prj_managers # collect all users where role == "prj_manager"
   end
+
+  def create
+    binding.pry
+  end
 end
