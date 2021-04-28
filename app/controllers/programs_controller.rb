@@ -10,7 +10,7 @@ class ProgramsController < ApplicationController
 
   def new
     @program = Program.new
-    @devs = Program.get_devs # collect all users where role == "dev"
-    @prj_manager = Program.get_prj_managers # collect all users where role == "prj_manager"
+    @devs = User.get_devs # collect all users where role == "dev"
+    @prj_manager = User.get_prj_managers # collect all users where role == "prj_manager"
   end
 end
