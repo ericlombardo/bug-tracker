@@ -1,0 +1,19 @@
+<% if flash.any? %> <!-- checks for any flash messages -->
+  <% flash.each do |type, mes| %> <!-- iterates through each one present-->
+    <div class="<%= type %>"><%= mes %></div> <!-- creates a div with type of alert and displays message-->
+  <% end %>
+<% end %>
+
+<h1>Login Developer</h1>
+<%= form_with model: @user, url: employee_login_path  do |f| %>  <!-- show errors for user instance if present --> 
+
+  <%= f.label :email %> <!-- display user input fields for login -->
+  <%= f.text_field :email %>
+  <br>
+  <%= f.label :password %>
+  <%= f.text_field :password %>
+  <br>
+  <%= f.submit "Login" %>
+<% end %>
+<p>First time reporting a bug? <a href="/employee_signup">Signup Here</a></p>
+  
