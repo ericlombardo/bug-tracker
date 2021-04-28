@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_many :programs, through: :programs_users
   has_many :bugs, through: :programs
 
+  scope :get_devs, -> {where(role: "dev")} 
+  scope :get_prj_managers, -> {where(role: "prj_manager")} 
 end
