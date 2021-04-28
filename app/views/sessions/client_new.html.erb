@@ -5,7 +5,7 @@
 <% end %>
 
 <h1>Login To Report A Bug</h1>
-<%= form_with url: login_path do |f| %>  <!-- show errors for user instance if present --> 
+<%= form_with url: client_login_path  do |f| %>  <!-- show errors for user instance if present --> 
 
   <%= f.label :email %> <!-- display user input fields for login -->
   <%= f.text_field :email %>
