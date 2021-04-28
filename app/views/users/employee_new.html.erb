@@ -1,0 +1,24 @@
+<h1>First Time Employee Signup</h1>
+
+<!-- alert errors if present -->
+<%= form_with model: @user, url: employee_signup_path  do |f| %>  <!-- show errors for user instance if present -->
+  <% if @user.errors.any? %>
+    <ul>
+      <% @user.errors.full_messages.each do |mes| %>
+        <li><%= mes %></li>
+      <% end %>
+    </ul>
+  <% end %>  
+
+  <%= f.label :name %>  <!-- display user input fields for new user -->
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <br>
+  <%= f.label :password %>
+  <%= f.text_field :password %>
+  <br>
+  <%= f.hidden_field :role %>
+  <%= f.submit "Signup" %>
+<% end %>
