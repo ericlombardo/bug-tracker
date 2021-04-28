@@ -1,0 +1,22 @@
+<h1>Onboarding For New Program</h1>
+
+<%= form_with model: @program do |f| %>
+  <%= f.label :name, "Project Name:" %> <!-- !!render project_info partial -->
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :description, "Description:" %>
+  <%= f.text_area :description %>
+  <br>
+  <h4>Development Status:</h4>  <!-- !!render dev_status partial -->
+  <%= f.radio_button :status, "develpment" %>
+  <%= f.label :status, "Development" %>
+  <br>
+  <%= f.radio_button :status, "testing" %>
+  <%= f.label :status, "Testing" %>
+  <br>
+  <%= f.radio_button :status, "production" %>
+  <%= f.label :status, "Production" %>
+  <br>
+
+
+<% end %>
