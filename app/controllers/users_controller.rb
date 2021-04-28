@@ -12,7 +12,20 @@ class UsersController < ApplicationController
     else
       render :new
     end
-    
+  end
+
+  def employee_new
+    @user = User.new(role: "dev")
+  end
+
+  def employee_create
+    @user = User.new(user_params)
+    if @user.save
+      session[:user_id] = @user.id 
+      redirect_to @user
+    else
+      render :new
+    end
   end
 
   private
