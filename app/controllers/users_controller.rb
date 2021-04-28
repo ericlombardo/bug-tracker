@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  def new
-    @user = User.new
+  def client_new
+    @user = User.new(role: "client")
   end
 
   def create
