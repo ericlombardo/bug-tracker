@@ -37,6 +37,24 @@
     </table>
   </div>
   <br>
- 
+  <h3>Developers:</h3>
+  <div class="col-6 table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-striped table-bordered table-sm">
+      <thead>
+        <tr>
+          <th>Select</th>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <% @devs.each do |dev| %>
+        <tr>
+          <td><input type="checkbox" name="team[:dev_ids][]" value="<%= dev.id %>"></td>
+          <td><%= dev.name%></td>
+          <td><%= dev.email%></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 
 <% end %>
