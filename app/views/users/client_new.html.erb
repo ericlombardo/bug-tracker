@@ -1,7 +1,7 @@
 <h1>Client Signup</h1>
 <h3>Create account to report bug</h3>
 <!-- alert errors if present -->
-<%= form_with model: @user do |f| %>  <!-- show errors for user instance if present -->
+<%= form_with model: @user, url: client_signup_path  do |f| %>  <!-- show errors for user instance if present -->
   <% if @user.errors.any? %>
     <ul>
       <% @user.errors.full_messages.each do |mes| %>
