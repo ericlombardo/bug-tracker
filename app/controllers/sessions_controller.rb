@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  def welcome
+  end
+
   def new # show new login form
   end
 
