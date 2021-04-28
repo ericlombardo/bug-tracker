@@ -8,7 +8,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id 
-      redirect_to programs_path
+      if @user.role == "client"
+        redirect_to programs_path
+      end
     else
       render :new
     end
