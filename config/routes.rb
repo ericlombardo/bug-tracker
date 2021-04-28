@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/client_login', to: "sessions#client_new"
   post '/client_login', to: "sessions#client_create"
   get '/client_signup', to: "users#client_new"
+  post'/client_signup', to: "users#client_create"
   
 
   post '/logout', to: "sessions#destroy"
