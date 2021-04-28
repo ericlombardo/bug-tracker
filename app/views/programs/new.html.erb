@@ -17,6 +17,26 @@
   <%= f.radio_button :status, "production" %>
   <%= f.label :status, "Production" %>
   <br>
-
+  <h3>Project Managers:</h3>
+  <div class="col-6 table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-striped table-bordered table-sm">
+      <thead>
+        <tr>
+          <th>Select</th>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <% @prj_managers.each do |pm| %>
+        <tr>
+          <td><input type="checkbox" name="team[:pm_ids][]" value="<%= pm.id %>"></td>
+          <td><%= pm.name%></td>
+          <td><%= pm.email%></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <br>
+ 
 
 <% end %>
