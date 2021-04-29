@@ -4,6 +4,8 @@ class ProgramsController < ApplicationController
     if params[:user_id] && params[:user_id].to_i == current_user.id
       @user = User.find_by(id: params[:user_id])
       @programs = @user.programs
+    elsif params[:user_id]
+      redirect_to user_programs_path(current_user), alert: "These are your programs"
     else
       @programs = Program.all
     end
