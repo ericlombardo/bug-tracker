@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id 
       redirect_to programs_path
     else
-      render :new
+      render :client_new
     end
   end
 
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id 
       redirect_to @user
     else
-      render :new
+      render :employee_new
     end
   end
 
