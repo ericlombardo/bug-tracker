@@ -15,12 +15,13 @@ class ProgramsController < ApplicationController
   end
 
   def create
-    binding.pry
     @program = Program.new(program_params)
     if @program.save
       redirect_to @program
-    else
-      redirect_to new_program_path
+    else                  
+      # check routing when validations in place
+      # make sure field with errors div and alerts show
+      redirect_to new_program_path  
     end
   end
 
