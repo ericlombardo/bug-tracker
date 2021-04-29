@@ -23,7 +23,7 @@
           <%= link_to "Programs", programs_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link"href="#">My Programs</a>
+          <%= link_to "My Programs", user_programs_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item">
           <a class="nav-link"href="#">My Bugs</a>
