@@ -1,7 +1,12 @@
 class ProgramsController < ApplicationController
 
   def index
-    @programs = Program.all
+    if params[:user_id] && params[:user_id].to_i == current_user.id
+      @user = User.find_by(id: params[:user_id])
+      @programs = @user.programs
+    else
+      @programs = Program.all
+    end
   end
 
   def show
