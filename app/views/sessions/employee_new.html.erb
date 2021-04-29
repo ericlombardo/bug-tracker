@@ -1,8 +1,4 @@
-<% if flash.any? %> <!-- checks for any flash messages -->
-  <% flash.each do |type, mes| %> <!-- iterates through each one present-->
-    <div class="<%= type %>"><%= mes %></div> <!-- creates a div with type of alert and displays message-->
-  <% end %>
-<% end %>
+
 
 <h1>Login Developer</h1>
 <%= form_with model: @user, url: employee_login_path  do |f| %>  <!-- show errors for user instance if present --> 
