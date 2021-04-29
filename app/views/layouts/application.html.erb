@@ -14,26 +14,28 @@
 
   <body>
     <br><br>
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link active"href="<%= user_path(current_user)%>">Overview</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link"href="<%= programs_path %>">Programs</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link"href="#">My Programs</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link"href="#">My Bugs</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link"href="#">Employees</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link"href="#">Logout</a>
-      </li>
-    </ul>
+    <% if current_user %>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <%= link_to "Overview", user_path(current_user), class: "nav-link active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Programs", programs_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"href="#">My Programs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"href="#">My Bugs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"href="#">Employees</a>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Logout", logout_path, method: "post" %>
+        </li>
+      </ul>
+    <% end %>
     <%= yield %>
   </body>
 </html>
