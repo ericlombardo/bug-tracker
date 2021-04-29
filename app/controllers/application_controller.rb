@@ -1,12 +1,12 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :logged_in?
+  helper_method :current_user
 
 
 
   private
 
   def current_user  # return user instance if logged in and present
-    User.find_by(id: logged_in?)
+    User.find_by(id: session[:user_id])
   end
 
   def logged_in? # returns user_id if present => redirects to root if not

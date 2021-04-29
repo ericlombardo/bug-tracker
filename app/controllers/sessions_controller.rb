@@ -30,7 +30,6 @@ class SessionsController < ApplicationController
   end
 
   def destroy # check for right user, redirect of not
-    binding.pry
     session.delete :user_id # removes user_id from session hash
     redirect_to root_path  # redirects to login page
   end
