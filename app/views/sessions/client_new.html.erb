@@ -1,12 +1,5 @@
 <h1>Login To Report A Bug</h1>
-<%= form_with model: @user, url: client_login_path  do |f| %>  <!-- show errors for user instance if present --> 
-  <% if @user.errors.any? %>
-    <ul>
-      <% @user.errors.full_messages.each do |mes| %>
-        <li><%= mes %></li>
-      <% end %>
-    </ul>
-  <% end %>  
+<%= form_with url: client_login_path  do |f| %>  <!-- show errors for user instance if present --> 
   <%= f.label :email %> <!-- display user input fields for login -->
   <%= f.text_field :email %>
   <br>
