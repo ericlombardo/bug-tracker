@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id # assign user id to session hash
       redirect_to programs_path # redirect desired view
     else  # if user not found or wrong password
-      flash.alert = "No user found. Try again or Signup"  # put message in flash hash
+      flash.alert = "Wrong Username or Password"  # put message in flash hash
       redirect_to client_login_path  # redirect to login view to show alert
     end
   end
@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id # assign user id to session hash
       redirect_to user # redirect desired view
     else  # if user not found or wrong password
-      flash.alert = "No user found. Try again or Signup"  # put message in flash hash
+      flash.alert = "Wrong Username or Password"  # put message in flash hash
       redirect_to client_login_path  # redirect to login view to show alert
     end
   end
