@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   post '/employee/signup', to: "users#employee_create"
 
   post '/logout', to: "sessions#destroy"
-  resources :users
+  resources :users do
+    resources :programs, only: [:index, :update, :edit, :show]
+  end
   resources :bugs
   resources :programs do
     resources :bugs
