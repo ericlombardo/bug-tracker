@@ -14,6 +14,11 @@
 
   <body>
     <br><br>
+    <% if flash.any? %> <!-- checks for any flash messages -->
+      <% flash.each do |type, mes| %> <!-- iterates through each one present-->
+        <div class="<%= type %>"><%= mes %></div> <!-- creates a div with type of alert and displays message-->
+      <% end %>
+    <% end %>
     <% if current_user %>
       <ul class="nav flex-column">
         <li class="nav-item">
