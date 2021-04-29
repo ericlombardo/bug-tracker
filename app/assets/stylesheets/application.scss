@@ -4,6 +4,12 @@
 @import "sessions";
 @import "users";
 
+
+.field_with_errors {
+  background-color: red;
+  display: table;
+}
+
 .my-custom-scrollbar {
   position: relative;
   height: 300px;
