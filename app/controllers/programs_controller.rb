@@ -16,5 +16,17 @@ class ProgramsController < ApplicationController
 
   def create
     binding.pry
+    @program = Program.new(program_params)
+    if @program.save
+      redirect_to @program
+    else
+      redirect_to new_program_path
+    end
+  end
+
+  private
+
+  def program_params
+    params.require(:program).permit(:name, :description, :status, user_ids: [])
   end
 end
