@@ -1,0 +1,64 @@
+<h1>Edit <%= @program.name %></h1>
+
+<%= form_with model: @program, action: "/programs/#{@program.id}" do |f| %>
+  <%= f.label :name, "Project Name:" %> <!-- !!render project_info partial -->
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :description, "Description:" %>
+  <%= f.text_area :description %>
+  <br>
+  <h4>Development Status:</h4>  <!-- !!render dev_status partial -->
+  <%= f.radio_button :status, "develpment" %>
+  <%= f.label :status, "Development" %>
+  <br>
+  <%= f.radio_button :status, "testing" %>
+  <%= f.label :status, "Testing" %>
+  <br>
+  <%= f.radio_button :status, "production" %>
+  <%= f.label :status, "Production" %>
+  <br>
+  <h3>Project Managers:</h3>
+  <div class="col-6 table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-striped table-bordered table-sm">
+      <thead>
+        <tr>
+          <th>Select</th>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @prj_managers.each do |pm| %>
+          <tr>
+            <td><%= check_box_tag "program[user_ids][]", pm.id, check?(pm.id) %></td>
+            <td><%= pm.name%></td>
+            <td><%= pm.email%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <h3>Developers:</h3>
+  <div class="col-6 table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-striped table-bordered table-sm">
+      <thead>
+        <tr>
+          <th>Select</th>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @devs.each do |dev| %>
+          <tr>
+            <td><%= check_box_tag "program[user_ids][]", dev.id, check?(dev.id) %></td>
+            <td><%= dev.name%></td>
+            <td><%= dev.email%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= f.submit "Update Program" %>
+<% end %>
