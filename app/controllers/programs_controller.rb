@@ -13,8 +13,11 @@ class ProgramsController < ApplicationController
     end
   end
 
-  def show
+  def show # how can I remove clunkiness??
     @program = Program.find_by(id: params[:id])
+    @open_bug_count = @program.bug_count("open")
+    @pend_bug_count = @program.bug_count("pending")
+    @closed_bug_count = @program.bug_count("open")
   end
 
   def new
