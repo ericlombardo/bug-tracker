@@ -61,7 +61,7 @@
     </table>
   </div>
   <br>
-  <%= f.radio_button :closed_date, Date.current %>
+  <%= f.check_box "#{closed_date.to_s}", {checked: closed?, name: "program[closed_date]", unchecked_value: "N/A"}, Date.current%>
   <%= f.label :closed_date, "Remove Support for Program" %>
   <br>
   <%= f.submit "Update Program" %>
