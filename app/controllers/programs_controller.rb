@@ -15,7 +15,7 @@ class ProgramsController < ApplicationController
 
   def show # how can I remove clunkiness??
     @program = Program.find_by(id: params[:id])
-    @open_bug_count = @program.bug_count("open")
+    @active_bug_count = @program.bug_count("active")
     @pend_bug_count = @program.bug_count("pending")
     @closed_bug_count = @program.bug_count("closed")
     @devs = @program.users.where(role: "dev") # create user scope method, just call method in view then @program.users.devs
