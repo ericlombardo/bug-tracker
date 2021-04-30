@@ -39,6 +39,22 @@ class ProgramsController < ApplicationController
     end
   end
 
+  def edit
+    if @program = Program.find_by(id: params[:id])
+      @devs = User.get_devs # collect all users where role == "dev"
+      @prj_managers = User.get_prj_managers # collect all users where role == "prj_manager"
+    end
+  end
+
+  def update
+    @program = Program.find_by(id: params[:id])
+    if @program.update(program_params)
+      redirect_to @program 
+    else
+      render :edit # show errors on @program object
+    end
+  end
+
   private
 
   def program_params
