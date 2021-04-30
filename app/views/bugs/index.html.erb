@@ -1,4 +1,6 @@
 bug index
-<% @bugs.each do |bug| %>
-  <%= bug.status %><br>
+<% if @bugs %>
+  <% @bugs.each do |bug| %>
+    <%= bug.status %><br>
+  <% end %>
 <% end %>
