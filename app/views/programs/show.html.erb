@@ -1,2 +1,28 @@
 Program show
-<%= @program.name %>
+<h3>Pending Bugs: <%= @pend_bug_count %></h3>
+
+<h3>Open Bugs: <%= @open_bug_count %></h3>
+
+<h3>Closed Bugs: <%= @closed_bug_count %></h3>
+
+<h5>Opened: <%= opened_date %></h5>
+
+<h5>Status: <%= @program.status %></h5>
+
+<h5>Closed: <%= closed_date %></h5>
+
+<h5>Description:</h5>
+<%= @program.description %>
+
+<h3>Project Manager:</h3>
+<% @prj_managers.each do |pm| %>
+  <%= pm.name %><br>
+<% end %>
+
+<h3>Developers:</h3>
+<% @devs.each do |d| %>
+  <%= d.name %><br>
+<% end %>
+
+<%= link_to "Update Program", program_path, method: "patch", class: "btn btn-primary" %> 
+<%= link_to "View Bugs", program_bugs_path(@program), class: "btn btn-primary" %>

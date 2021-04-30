@@ -18,6 +18,8 @@ class ProgramsController < ApplicationController
     @open_bug_count = @program.bug_count("open")
     @pend_bug_count = @program.bug_count("pending")
     @closed_bug_count = @program.bug_count("open")
+    @devs = @program.users.where(role: "dev")
+    @prj_managers = @program.users.where(role: "prj_manager")
   end
 
   def new
