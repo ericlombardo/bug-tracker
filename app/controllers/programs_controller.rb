@@ -17,8 +17,8 @@ class ProgramsController < ApplicationController
     @program = Program.find_by(id: params[:id])
     @open_bug_count = @program.bug_count("open")
     @pend_bug_count = @program.bug_count("pending")
-    @closed_bug_count = @program.bug_count("open")
-    @devs = @program.users.where(role: "dev")
+    @closed_bug_count = @program.bug_count("closed")
+    @devs = @program.users.where(role: "dev") # create user scope method, just call method in view then @program.users.devs
     @prj_managers = @program.users.where(role: "prj_manager")
   end
 
@@ -58,6 +58,6 @@ class ProgramsController < ApplicationController
   private
 
   def program_params
-    params.require(:program).permit(:name, :description, :status, user_ids: [])
+    params.require(:program).permit(:name, :description, :status, :closed_date, user_ids: [])
   end
 end
