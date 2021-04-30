@@ -1,6 +1,6 @@
 <h1>Edit <%= @program.name %></h1>
 
-<%= form_with model: @program, action: "/programs/#{@program.id}" do |f| %>
+<%= form_with model: @program do |f| %>
   <%= f.label :name, "Project Name:" %> <!-- !!render project_info partial -->
   <%= f.text_field :name %>
   <br>
@@ -60,5 +60,9 @@
       </tbody>
     </table>
   </div>
+  <br>
+  <%= f.radio_button :closed_date, Date.current %>
+  <%= f.label :closed_date, "Remove Support for Program" %>
+  <br>
   <%= f.submit "Update Program" %>
 <% end %>
