@@ -1,0 +1,7 @@
+users index
+<br>
+<% if @users %>
+  <% @users.each do |user| %>
+    <%= user.name %><br>
+  <% end %>
+<% end %>

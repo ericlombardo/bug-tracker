@@ -32,10 +32,10 @@
           <%= link_to "My Programs", user_programs_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link"href="#">My Bugs</a>
+          <%= link_to "My Bugs", user_bugs_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link"href="#">Employees</a>
+          <%= link_to "Employees", users_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "Logout", logout_path, method: "post", class: "nav-link"  %>

@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  def index # must be admin to view
+    @users = User.all
+  end
   def client_new
     @user = User.new(role: "client")
   end
