@@ -3,9 +3,15 @@ class BugsController < ApplicationController
     if params[:program_id]
       @prog = Program.find_by(id: params[:program_id])
       @bugs = @prog.bugs
+    elsif params[:user_id] 
+      if params[:user_id].to_i == current_user.id
+        @user = User.find_by(id: params[:user_id])
+        @programs = @user.programs
+      else
+        redirect_to user_bugs_path(current_user), info: "These are your bugs"
+      end
     else
-      # message about selecting a program before reporting a bug
-      redirect_to programs_path
+      redirect_to programs_path, info: "Please select a program in order to view bugs"
     end
   end
 
