@@ -1,12 +1,12 @@
 class BugsController < ApplicationController
   def index
     if params[:program_id]
-      @prog = Program.find_by(id: params[:program_id])
-      @bugs = @prog.bugs
+      @program = Program.find_by(id: params[:program_id])
+      @bugs = @program.bugs
     elsif params[:user_id] 
       if params[:user_id].to_i == current_user.id
         @user = User.find_by(id: params[:user_id])
-        @programs = @user.programs
+        @bugs = @user.bugs
       else
         redirect_to user_bugs_path(current_user), info: "These are your bugs"
       end

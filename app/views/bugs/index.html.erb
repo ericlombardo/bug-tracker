@@ -1,6 +1,12 @@
 bug index
+<h1><%= "#{@program.name}'s Bugs" if @program %></h1> <!-- helper to decide title-->
+<h1><%= "#{@user.name}'s Bugs" if @user %></h1>
+
 <% if @bugs %>
   <% @bugs.each do |bug| %>
     <%= bug.status %><br>
+    <%= bug.priority %><br>
+    <%= bug.overview %><br>
+    <%= bug.category %><br><br>
   <% end %>
 <% end %>
