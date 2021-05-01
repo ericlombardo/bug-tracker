@@ -1,2 +1,5 @@
 bug show
+<br>
 <%= @bug.description %>
+<br>
+<%= link_to "Update This Bug", edit_program_bug_path(@bug.program, @bug), class: "btn btn-primary" %>

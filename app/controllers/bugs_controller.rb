@@ -25,12 +25,24 @@ class BugsController < ApplicationController
   end
 
   def create 
-    binding.pry
     @bug = Bug.new(bug_params)  # create new bug instance
     if @bug.save  # make sure it is valid/saves
       redirect_to [@bug.program, @bug]  
     else
       render :new
+    end
+  end
+
+  def edit
+    @bug = Bug.find_by(id: params[:id])
+  end
+
+  def update 
+    @bug = Bug.find_by(id: params[:id])
+    if @bug.update(bug_params)
+      redirect_to program_bug_path(@bug)
+    else
+      render :edit # show error messages
     end
   end
   
