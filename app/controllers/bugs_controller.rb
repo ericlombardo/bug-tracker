@@ -16,9 +16,8 @@ class BugsController < ApplicationController
   end
 
   def new
-    if params[:program_id]
-      @prog = Program.find_by(id: params[:program_id])
-      @bug = @prog.bugs.build
+    if params[:program_id] && @prog = Program.find_by(id: params[:program_id])
+      @bug = @prog.bugs.build(status: "pending")
     else
       # message about selecting a program before reporting a bug
       redirect_to programs_path
@@ -26,6 +25,7 @@ class BugsController < ApplicationController
   end
 
   def create 
+    binding.pry
     @bug = Bug.new(bug_params)  # create new bug instance
     if @bug.save  # make sure it is valid/saves
       redirect_to [@bug.program, @bug]  

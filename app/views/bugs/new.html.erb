@@ -1,32 +1,31 @@
-new bug form
+<h1>Report New Bug for <%= @prog.name %></h1>
+
 <%= form_with model: ([@prog, @bug]) do |f| %>  <!-- build bug form with needed attributes-->
-  <%= f.label :category %>
-  <%= f.text_field :category %>
+  <%= f.label :priority, "Priority: " %>           
+  <%= f.select :priority, ["low", "normal", "important", "critical"], include_blank: true %>
   <br>
-  <%= f.label :priority %>
-  <%= f.text_field :priority %>
-  <br>
-  <%= f.label :status %>
-  <%= f.text_field :status %>
+  <%= f.label :category, "Type: " %>
+  <%= f.select :category, ["functional", "performance", "usability", "compatibility", "security"], include_blank: true %>
   <br>
   <%= f.label :overview %><br>
-  <%= f.text_area :overview %>
+  <%= f.text_area :overview, size: "20x10" %>
   <br>
   <%= f.label :description %><br>
-  <%= f.text_area :description %>
+  <%= f.text_area :description, size: "20x10" %>
   <br>
   <%= f.label :notes %><br>
-  <%= f.text_area :notes %>
+  <%= f.text_area :notes, size: "20x10" %>
   <br>
   <%= f.label :next_steps %><br>
-  <%= f.text_area :next_steps %>
+  <%= f.text_area :next_steps, size: "20x10" %>
   <br>
   <%= f.label :update_for_client %><br>
-  <%= f.text_area :update_for_client %>
+  <%= f.text_area :update_for_client, size: "20x10" %>
   <br>
   <!-- DO NOT INCLUDE IN UPDATE FORM -->
-  <!-- sets created date to the current date for logging purposes -->
-  <%= f.hidden_field :created, value: Date.current %>
-  <%= f.hidden_field :program_id, value: @prog.id %>
+  <%= f.hidden_field :created, value: Date.current %> <!-- hidden field for created attributed-->
+  <%= f.hidden_field :program_id, value: @prog.id %>  <!-- hidden field for program id-->
+  <%= f.hidden_field :status, value: "pending" %> <!-- hidden field for created attributed-->
+  
   <%= f.submit "Report Bug" %>
 <% end %>

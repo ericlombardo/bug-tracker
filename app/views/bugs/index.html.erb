@@ -10,3 +10,7 @@ bug index
     <%= bug.category %><br><br>
   <% end %>
 <% end %>
+
+<% if @program %>
+  <%= link_to "Create New Bug for #{@program.name}", new_program_bug_path(@program), class: "btn btn-primary" %>
+<% end %>
