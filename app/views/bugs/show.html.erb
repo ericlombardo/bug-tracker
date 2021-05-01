@@ -1,5 +1,20 @@
-bug show
+<h1><%= "Bug #{@bug.id} for #{@bug.program.name}" %></h1>
 <br>
-<%= @bug.description %>
+<h4>Overview: </h4>
+<%= @bug.overview %><br>
+<h4>Description: </h4>
+<%= @bug.description %><br>
+<h4>Status: </h4>
+<%= @bug.status %><br>
+<h4>Priority: </h4>
+<%= @bug.priority %><br>
+<h4>Type: </h4>
+<%= @bug.category %><br>
+<h4>Next Steps: </h4>
+<%= @bug.next_steps %><br>
+<h4>Notes: </h4>
+<%= @bug.notes %><br>
+<h4>Update For Client: </h4>
+<%= @bug.update_for_client %><br>
 <br>
 <%= link_to "Update This Bug", edit_program_bug_path(@bug.program, @bug), class: "btn btn-primary" %>
