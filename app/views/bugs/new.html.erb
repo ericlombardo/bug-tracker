@@ -19,9 +19,6 @@
   <%= f.label :next_steps %><br>
   <%= f.text_area :next_steps, size: "20x10" %>
   <br>
-  <%= f.label :update_for_client %><br>
-  <%= f.text_area :update_for_client, size: "20x10" %>
-  <br>
   <!-- DO NOT INCLUDE IN UPDATE FORM -->
   <%= f.hidden_field :created, value: Date.current %> <!-- hidden field for created attributed-->
   <%= f.hidden_field :program_id, value: @prog.id %>  <!-- hidden field for program id-->
