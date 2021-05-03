@@ -2,3 +2,5 @@ Title: <%= @task.title %><br>
 Content: <%= @task.content %><br>
 Program: <%= @task.program.name %><br>
 Urgency: <%= @task.urgency %><br>
+
+<%= link_to "Update Task", edit_user_task_path(current_user), class: "btn btn-sm btn-primary" %>

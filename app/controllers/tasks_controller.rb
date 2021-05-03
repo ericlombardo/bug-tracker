@@ -4,6 +4,7 @@ class TasksController < ApplicationController
   def index
     @tasks = User.find_by(id: params[:user_id]).tasks 
   end
+
   def new
     user = User.find_by(id: params[:user_id])
     @task = user.tasks.build
@@ -12,16 +13,22 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      redirect_to user_tasks_path(current_user)
+      redirect_to user_task_path(current_user, @task)
     else
       render :new
     end
   end
   def edit
-  
+    @task = Task.find_by(id: params[:id])
   end
   def update
-  
+    binding.pry
+    @task = Task.find_by(id: params[:id])
+    if @task.update(task_params)
+      redirect_to user_task_path(@task.user, @task)
+    else
+      render :edit
+    end
   end
   def show
     if params[:user_id]
