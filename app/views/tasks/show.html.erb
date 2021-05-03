@@ -4,3 +4,4 @@ Program: <%= @task.program.name %><br>
 Urgency: <%= @task.urgency %><br>
 
 <%= link_to "Update Task", edit_user_task_path(current_user), class: "btn btn-sm btn-primary" %>
+<%= button_to "Delete Task", user_task_path(@task.user, @task), method: "delete", class: "btn btn-sm btn-primary" %>

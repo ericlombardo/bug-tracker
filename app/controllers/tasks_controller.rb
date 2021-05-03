@@ -22,7 +22,6 @@ class TasksController < ApplicationController
     @task = Task.find_by(id: params[:id])
   end
   def update
-    binding.pry
     @task = Task.find_by(id: params[:id])
     if @task.update(task_params)
       redirect_to user_task_path(@task.user, @task)
@@ -36,7 +35,13 @@ class TasksController < ApplicationController
     end
   end
   def destroy
-  
+    if current_user.id == params[:user_id].to_i
+      task = Task.find_by(id: params[:id])
+      task.destroy
+      redirect_to user_tasks_path(current_user)
+    else
+      redirect_to user_tasks_path(current_user), alert: "These are your tasks"
+    end
   end
 
   private
