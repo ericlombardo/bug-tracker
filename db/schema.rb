@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_03_185647) do
+ActiveRecord::Schema.define(version: 2021_05_03_172859) do
 
   create_table "bugs", force: :cascade do |t|
     t.string "category"
@@ -49,10 +49,9 @@ ActiveRecord::Schema.define(version: 2021_05_03_185647) do
     t.text "content"
     t.string "urgency"
     t.integer "user_id"
-    t.integer "bug_id"
+    t.integer "program_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status"
   end
 
   create_table "users", force: :cascade do |t|

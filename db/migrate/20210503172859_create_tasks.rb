@@ -5,7 +5,7 @@ class CreateTasks < ActiveRecord::Migration[6.1]
       t.text :content
       t.string :urgency
       t.integer :user_id
-      t.integer :bug_id
+      t.integer :program_id
 
       t.timestamps
     end
