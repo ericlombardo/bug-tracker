@@ -40,7 +40,9 @@ group :development, :test do
   gem 'dotenv-rails'
 
   #gems for omniauth
+  gem 'omniauth'
   gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+  gem 'omniauth-rails_csrf_protection'
 end
 
 group :development do

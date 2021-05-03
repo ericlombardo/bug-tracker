@@ -5,13 +5,17 @@ Rails.application.routes.draw do
   get '/client/login', to: "sessions#client_new"  
   post '/client/login', to: "sessions#client_create"
   get '/client/signup', to: "users#client_new"
-  post'/client/signup', to: "users#client_create"
-  
+  post '/client/signup', to: "users#client_create"
+
   # routes for employee login and signup
   get '/employee/login', to: "sessions#employee_new"
   post '/employee/login', to: "sessions#employee_create"
   get '/employee/signup', to: "users#employee_new"
   post '/employee/signup', to: "users#employee_create"
+
+  # route for omniauth callback
+  get 'auth/github', as: "github_auth"
+  match '/auth/:provider/callback', to: 'sessions#omniauth', via: [:get, :post]
 
   # route for user logout
   post '/logout', to: "sessions#destroy"

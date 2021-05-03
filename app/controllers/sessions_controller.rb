@@ -29,6 +29,20 @@ class SessionsController < ApplicationController
     end
   end
 
+  def omniauth
+    user = User.find_or_create_by(uid: auth_hash[:uid], provider: auth_hash[:provider] ) do |u|
+      u.name = auth_hash[:info][:name]
+      u.email = auth_hash[:info][:email]
+      u.password = SecureRandom.hex(15)
+    end
+    if user.valid?
+      session[:user_id] = user.id
+      redirect_to user
+    else
+      redirect_to root_path
+    end
+  end
+
   def destroy # check for right user, redirect of not
     session.delete :user_id # removes user_id from session hash
     redirect_to root_path  # redirects to login page
@@ -39,4 +53,11 @@ class SessionsController < ApplicationController
   def session_params  # ensures that only user with email and password attributes are accepted
     params.require(:user).permit(:email, :password)
   end 
+
+  def auth_hash
+    request.env["omniauth.auth"]
+  end
 end
+
+# found omniauth walkthrough to help troubleshoot connection issues in routes
+# https://www.youtube.com/watch?v=WWcbcNlsK7U
