@@ -1,11 +1,11 @@
 class TasksController < ApplicationController
-  before_action :correct_user?
+  # before_action :correct_user?
 
   def index
-    binding.pry
+    @tasks = User.find_by(id: params[:user_id]).tasks 
   end
   def new
-  
+
   end
   def create
   
@@ -17,7 +17,9 @@ class TasksController < ApplicationController
   
   end
   def show
-  
+    if params[:user_id]
+      @task = Task.find_by(id: params[:id])
+    end
   end
   def destroy
   
@@ -26,8 +28,6 @@ class TasksController < ApplicationController
   private
 
   def correct_user?
-    binding.pry
-    redirect_to current_user, alert: "You can only create tasks for yourself" unless
-    params[:user_id].to_i == current_user.id
+    redirect_to current_user, alert: "You can only create tasks for yourself" unless params[:user_id].to_i == current_user.id
   end
 end
