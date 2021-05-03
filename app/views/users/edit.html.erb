@@ -1,0 +1,21 @@
+<h1>Edit Employee Info</h1>
+<!-- alert errors if present -->
+<% if @user && @user.errors.any? %>
+  <ul>
+    <% @user.errors.full_messages.each do |mes| %>
+      <li><%= mes %></li>
+    <% end %>
+  </ul>
+<% end %>  
+<%= form_with model: @user do |f| %>  <!-- show errors for user instance if present -->
+
+  <%= f.label :name %>  <!-- display user input fields for new user -->
+  <%= f.text_field :name, size: "40" %>
+  <br>
+  <%= f.label :email %>
+  <%= f.text_field :email, size: "45" %>
+  <br>
+  <%= f.label :role %>
+  <%= f.select :role , ["dev", "project manager", "admin"] %>
+  <%= f.submit "Update Employee" %>
+<% end %>

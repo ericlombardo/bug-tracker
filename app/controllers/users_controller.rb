@@ -31,7 +31,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find_by(id: params[:id])
+  end
 
+  def update
+    @user = User.find_by(id: params[:id])
+    if @user.update(user_params) && current_user.role == "admin"
+      redirect_to users_path
+    elsif @user.update(user_params)
+      redirect_to @user
+    else
+      render :edit
+    end
+  end
   def search
     query = "%#{params[:query]}%"
     @filter = params[:query]
