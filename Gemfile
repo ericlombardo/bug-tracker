@@ -38,6 +38,9 @@ group :development, :test do
   gem 'pry'
   # Allow for ENV variables to be set for secrets and keys (put in .gitignore)
   gem 'dotenv-rails'
+
+  #gems for omniauth
+  gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 end
 
 group :development do
