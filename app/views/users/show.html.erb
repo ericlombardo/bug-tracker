@@ -4,3 +4,10 @@
 <%= "Programs: #{@user.programs.count}" %><br>
 <%= "Bugs #{@user.bugs.count}" %>
 
+<h2>Top - Tasks</h2>
+
+<% @user.tasks.each do |t| %>
+  <%= t.program.name %><br>
+  <%= t.title %><br>
+  <%= t.urgency %><br><br>
+<% end %>
