@@ -13,7 +13,12 @@ Rails.application.routes.draw do
   get '/employee/signup', to: "users#employee_new"
   post '/employee/signup', to: "users#employee_create"
 
+  # route for user logout
   post '/logout', to: "sessions#destroy"
+
+  # route for employee search feature
+  post 'users/search', to: "users#search", via: :post
+
   resources :bugs
   resources :users do
     resources :programs, only: [:index]

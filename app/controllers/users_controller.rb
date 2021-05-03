@@ -31,6 +31,13 @@ class UsersController < ApplicationController
     end
   end
 
+
+  def search
+    query = "%#{params[:query]}%"
+    @filter = params[:query]
+    @users = User.where("name LIKE ?", query)
+  end
+
   private
 
   def user_params
