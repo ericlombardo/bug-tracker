@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :programs, only: [:index]
     resources :bugs, only: [:index]
+    resources :tasks
   end
   resources :programs do
     resources :bugs
