@@ -61,10 +61,11 @@
     </table>
   </div>
   <br>
+  <%= f.label :logo, "Add or Change Logo: "%><br>
+  <%= f.file_field :logo %><br>
+
   <%= f.check_box "#{closed_date.to_s}", {checked: closed?, name: "program[closed_date]", unchecked_value: "N/A"}, Date.current%>
   <%= f.label :closed_date, "Remove Support for Program" %>
   <br>
-  <%= f.label :logo, "Program Logo: "%><br>
-  <%= f.file_field :logo %><br>
   <%= f.submit "Update Program" %>
 <% end %>

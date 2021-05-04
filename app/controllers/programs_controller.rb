@@ -29,7 +29,6 @@ class ProgramsController < ApplicationController
   end
 
   def create
-    binding.pry
     @program = Program.new(program_params)
     if @program.save
       redirect_to @program

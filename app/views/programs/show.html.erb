@@ -25,7 +25,9 @@ Program show
 <% end %>
 <br>
 <% if @program.logo.attached? %>
-  <image src="<%=(url_for(@program.logo))%>" alt="program logo" width="80px"  ></image>
+  <image src="<%=(url_for(@program.logo))%>" alt="program logo" width="80px"></image>
+<% else %>
+  <%= image_tag("default_logo.svg", width: 80) %>
 <% end %>
 <br>
 <%= link_to "Update Program", edit_program_path, class: "btn btn-primary" %> 
