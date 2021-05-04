@@ -64,5 +64,7 @@
   <%= f.check_box "#{closed_date.to_s}", {checked: closed?, name: "program[closed_date]", unchecked_value: "N/A"}, Date.current%>
   <%= f.label :closed_date, "Remove Support for Program" %>
   <br>
+  <%= f.label :program_logo, "Program Logo: "%><br>
+  <%= f.file_field :program_logo %><br>
   <%= f.submit "Update Program" %>
 <% end %>
