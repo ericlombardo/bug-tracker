@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate, only: [:index, :show, :edit, :update, :search]
+  before_action :authenticate, only: [:index, :show, :client_new, :employee_new, :edit, :search]
 
   def index # must be admin to view
     @users = User.all
