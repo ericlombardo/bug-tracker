@@ -44,6 +44,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    binding.pry
     @user = User.find_by(id: params[:id])
     if @user.update(user_params) && current_user.role == "admin"
       redirect_to users_path
@@ -55,9 +56,8 @@ class UsersController < ApplicationController
   end
   
   def search
-    query = "%#{params[:query]}%"
     @filter = params[:query]
-    @users = User.where("name LIKE ?", query)
+    @users = User.where("name LIKE ?", "%#{params[:query]}%")
   end
 
   private
@@ -67,7 +67,7 @@ class UsersController < ApplicationController
   end
 
   def check_user
-    if params[:id].to_i != current_user.id 
+    if params[:id].to_i != current_user.id && current_user.role != "admin"
       redirect_to current_user, alert: "This is your account"
     end
   end
