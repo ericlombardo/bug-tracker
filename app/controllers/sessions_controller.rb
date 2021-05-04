@@ -33,6 +33,7 @@ class SessionsController < ApplicationController
     user = User.find_or_create_by(uid: auth_hash[:uid], provider: auth_hash[:provider] ) do |u|
       u.name = auth_hash[:info][:name]
       u.email = auth_hash[:info][:email]
+      u.role = "client"
       u.password = SecureRandom.hex(15)
     end
     if user.valid?
