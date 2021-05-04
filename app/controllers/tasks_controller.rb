@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
-  before_action :authenticate, :correct_user?
-  
+  before_action :authenticate, :check_user
+
   def index
     @tasks = User.find_by(id: params[:user_id]).tasks 
   end
@@ -29,30 +29,27 @@ class TasksController < ApplicationController
       render :edit
     end
   end
+
   def show
     if params[:user_id]
       @task = Task.find_by(id: params[:id])
     end
   end
+
   def destroy
-    if current_user.id == params[:user_id].to_i
-      task = Task.find_by(id: params[:id])
-      task.destroy
-      redirect_to user_tasks_path(current_user)
-    else
-      redirect_to user_tasks_path(current_user), alert: "These are your tasks"
-    end
-  end
-
-  private
-
-  def correct_user?
-    redirect_to current_user, alert: "You can only create tasks for yourself" unless params[:user_id].to_i == current_user.id
+    Task.find_by(id: params[:id]).destroy
+    redirect_to user_tasks_path(current_user)
   end
 
   private
   
   def task_params
     params.require(:task).permit(:title, :content, :urgency, :user_id, :program_id)
+  end
+
+  def check_user
+    if params[:user_id].to_i != current_user.id
+      redirect_to user_tasks_path(current_user), alert: "These are your tasks"
+    end
   end
 end
