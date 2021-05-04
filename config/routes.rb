@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   # route for employee search feature
   post 'users/search', to: "users#search", via: :post
-
+  get 'users/search', to: "users#index"
 
   resources :users do
     resources :programs, only: [:index]
