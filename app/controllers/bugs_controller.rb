@@ -1,9 +1,9 @@
 class BugsController < ApplicationController
   def index
-    if params[:program_id]
+    if params[:program_id] # if nested_program? #=> instance of program 
       @program = Program.find_by(id: params[:program_id])
-      @bugs = @program.bugs
-    elsif params[:user_id] 
+      @bugs = @program.bugs 
+    elsif params[:user_id]  # elsif nested_user? #=> instance of user
       if params[:user_id].to_i == current_user.id
         @user = User.find_by(id: params[:user_id])
         @bugs = @user.bugs
