@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate, only: [:index, :show, :client_new, :employee_new, :edit, :search]
-
+  before_action :already_logged_in, only: [:client_new, :employee_new]
   def index # must be admin to view
     @users = User.all
   end

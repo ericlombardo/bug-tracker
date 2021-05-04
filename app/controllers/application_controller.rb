@@ -7,4 +7,10 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+  def already_logged_in
+    if current_user
+      redirect_to current_user
+    end
+  end
 end

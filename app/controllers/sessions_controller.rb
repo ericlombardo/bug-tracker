@@ -1,11 +1,9 @@
 class SessionsController < ApplicationController
   before_action :authenticate, only: [:destroy]
+  before_action :already_logged_in, only: [:welcome, :client_new, :employee_new, :omniauth ]
 
-  def welcome
-  end
-
-  def client_new # show new login form
-  end
+  # welcome | client_new | employee_new 
+  # actions above have nothing in them, don't need to be in controller
 
   def client_create
     user = User.find_by(email: params[:email])  # find the user in database using email
@@ -18,8 +16,6 @@ class SessionsController < ApplicationController
     end
   end
 
-  def employee_new
-  end
   def employee_create
     user = User.find_by(email: params[:email])  # find the user in database using email
     if user && user.authenticate(params[:password]) # make sure user exists and password matches
