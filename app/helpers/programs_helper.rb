@@ -8,7 +8,7 @@ module ProgramsHelper
     @program.closed_date.instance_of?(Date)
   end
   def opened_date
-    @program.opened_date.strftime("%A %d, %Y")
+    @program.opened_date.strftime("%A %d, %Y") if @program.opened_date
   end
 
   def closed_date

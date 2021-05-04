@@ -7,7 +7,7 @@ class Program < ApplicationRecord
   has_many :users, through: :programs_users
   has_many :bugs
   has_many :tasks
-  has_one_attached :app_logo
+  has_one_attached :logo
 
   def bug_count(status)
     self.bugs.where("status == ?", status).count 

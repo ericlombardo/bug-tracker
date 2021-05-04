@@ -23,6 +23,10 @@ Program show
 <% @devs.each do |d| %>
   <%= d.name %><br>
 <% end %>
-
+<br>
+<% if @program.logo.attached? %>
+  <image src="<%=(url_for(@program.logo))%>" alt="program logo" width="80px"  ></image>
+<% end %>
+<br>
 <%= link_to "Update Program", edit_program_path, class: "btn btn-primary" %> 
 <%= link_to "View Bugs", program_bugs_path(@program), class: "btn btn-primary" %>

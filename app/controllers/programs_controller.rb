@@ -29,6 +29,7 @@ class ProgramsController < ApplicationController
   end
 
   def create
+    binding.pry
     @program = Program.new(program_params)
     if @program.save
       redirect_to @program
@@ -58,6 +59,6 @@ class ProgramsController < ApplicationController
   private
 
   def program_params
-    params.require(:program).permit(:name, :description, :status, :closed_date, user_ids: [])
+    params.require(:program).permit(:name, :description, :status, :opened_date, :closed_date, :logo, user_ids: [])
   end
 end

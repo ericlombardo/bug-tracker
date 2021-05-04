@@ -60,8 +60,8 @@
       </tbody>
     </table>
   </div>
-
-  <%= f.label :program_logo, "Program Logo: "%><br>
-  <%= f.file_field :program_logo %><br>
+  <%= f.hidden_field :opened_date, value: Date.current %>
+  <%= f.label :logo, "Program Logo: "%><br>
+  <%= f.file_field :logo %><br>
   <%= f.submit "Create Project" %>
 <% end %>
