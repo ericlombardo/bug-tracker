@@ -1,5 +1,6 @@
 class ProgramsController < ApplicationController
-
+  before_action :authenticate
+  
   def index
     if params[:user_id] 
       if params[:user_id].to_i == current_user.id

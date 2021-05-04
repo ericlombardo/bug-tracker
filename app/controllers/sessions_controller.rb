@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :authenticate, only: [:destroy]
+
   def welcome
   end
 
@@ -44,7 +46,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def destroy # check for right user, redirect of not
+  def destroy
     session.delete :user_id # removes user_id from session hash
     redirect_to root_path  # redirects to login page
   end

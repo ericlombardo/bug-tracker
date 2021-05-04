@@ -1,4 +1,6 @@
 class BugsController < ApplicationController
+  before_action :authenticate
+  
   def index
     if params[:program_id] # if nested_program? #=> instance of program 
       @program = Program.find_by(id: params[:program_id])

@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
-  # before_action :correct_user?
-
+  before_action :authenticate, :correct_user?
+  
   def index
     @tasks = User.find_by(id: params[:user_id]).tasks 
   end
