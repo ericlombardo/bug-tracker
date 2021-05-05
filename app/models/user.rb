@@ -11,7 +11,6 @@ class User < ApplicationRecord
 
   # validations
   validates :name, :email, presence: true
-  validates :password, presence: true, length: {minimum: 8}
   validates :email, uniqueness: {message: "must be unique to continue"}, format: { with: /.{1,}@[^.]{1,}/, message: "is not valid"}, unless: :no_email
   
   # scope methods

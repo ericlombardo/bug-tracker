@@ -31,7 +31,8 @@ class SessionsController < ApplicationController
     user = User.find_or_create_by(email: auth_hash[:info][:email]) do |u|
       assign_user_attributes(u)
     end
-    if user.id
+    user.password = SecureRandom.hex(15)
+    if user.save
       session[:user_id] = user.id
       user.role == "client" ? (redirect_to programs_path) : (redirect_to user)
     else
@@ -59,7 +60,6 @@ class SessionsController < ApplicationController
     # user.provider = auth_hash[:provider]
     user.name = auth_hash[:info][:name]
     user.role = find_role # assign role based on provider => assign_role method => git = "dev" google = "client"
-    user.password = SecureRandom.hex(15)
   end
 
   def find_role
