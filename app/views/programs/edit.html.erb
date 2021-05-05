@@ -2,19 +2,19 @@
 
 <%= form_with model: @program do |f| %>
   <%= f.label :name, "Project Name:" %> <!-- !!render project_info partial -->
-  <%= f.text_field :name %>
+  <%= f.text_field :name, required: true %>
   <br>
   <%= f.label :description, "Description:" %>
-  <%= f.text_area :description %>
+  <%= f.text_area :description, required: true %>
   <br>
   <h4>Development Status:</h4>  <!-- !!render dev_status partial -->
-  <%= f.radio_button :status, "develpment" %>
+  <%= f.radio_button :status, "develpment", required: true %>
   <%= f.label :status, "Development" %>
   <br>
-  <%= f.radio_button :status, "testing" %>
+  <%= f.radio_button :status, "testing", required: true %>
   <%= f.label :status, "Testing" %>
   <br>
-  <%= f.radio_button :status, "production" %>
+  <%= f.radio_button :status, "production", required: true %>
   <%= f.label :status, "Production" %>
   <br>
   <h3>Project Managers:</h3>
