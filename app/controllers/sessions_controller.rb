@@ -33,7 +33,7 @@ class SessionsController < ApplicationController
     end
     if user.id
       session[:user_id] = user.id
-      redirect_to programs_path
+      user.role == "client" ? (redirect_to programs_path) : (redirect_to user)
     else
       redirect_to root_path
     end
@@ -58,13 +58,16 @@ class SessionsController < ApplicationController
     # user.uid = auth_hash[:uid]
     # user.provider = auth_hash[:provider]
     user.name = auth_hash[:info][:name]
-    user.role = find_role(auth_hash[:provider]) # assign role based on provider => assign_role method => git = "dev" google = "client"
+    user.role = find_role # assign role based on provider => assign_role method => git = "dev" google = "client"
     user.password = SecureRandom.hex(15)
   end
 
-  def find_role(provider)
-    "dev" if provider == "github"
-    "client" if provider == "google_oauth2" 
+  def find_role
+    if auth_hash[:provider] == "github"
+      "dev"
+    elsif auth_hash[:provider] == "google_oauth2" 
+      "client" 
+    end
   end
 end
 
