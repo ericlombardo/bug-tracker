@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate, only: [:index, :show, :client_new, :employee_new, :edit, :search]
+  before_action :authenticate, only: [:index, :show, :edit, :search]
   before_action :already_logged_in, only: [:client_new, :employee_new]
   before_action :check_user, only: [:edit, :show]
   
@@ -44,7 +44,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    binding.pry
     @user = User.find_by(id: params[:id])
     if @user.update(user_params) && current_user.role == "admin"
       redirect_to users_path
@@ -67,7 +66,7 @@ class UsersController < ApplicationController
   end
 
   def check_user
-    if params[:id].to_i != current_user.id && current_user.role != "admin"
+    if current_user.role != "admin" || params[:id].to_i != current_user.id
       redirect_to current_user, alert: "This is your account"
     end
   end

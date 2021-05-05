@@ -14,12 +14,12 @@ class ProgramsController < ApplicationController
     end
   end
 
-  def show # how can I remove clunkiness??
+  def show # write helper methods in model like get_active_count that return instance variablle
     @program = Program.find_by(id: params[:id])
     @active_bug_count = @program.bug_count("active")
     @pend_bug_count = @program.bug_count("pending")
     @closed_bug_count = @program.bug_count("closed")
-    @devs = @program.users.where(role: "dev") # create user scope method, just call method in view then @program.users.devs
+    @devs = @program.users.where(role: "dev")
     @prj_managers = @program.users.where(role: "prj_manager")
   end
 

@@ -28,15 +28,14 @@ class SessionsController < ApplicationController
   end
 
   def omniauth
-    user = User.find_or_create_by(uid: auth_hash[:uid], provider: auth_hash[:provider] ) do |u|
-      u.name = auth_hash[:info][:name]
-      u.email = auth_hash[:info][:email]
-      u.role = "client"
-      u.password = SecureRandom.hex(15)
-    end
-    if user.valid?
+    user = User.find_or_create_by(uid: auth_hash[:uid], provider: auth_hash[:provider])
+    user.name = auth_hash[:info][:name]
+    user.email = auth_hash[:info][:email]
+    user.role = "client" # assign role based on provider => assign_role method => git = "dev" google = "client"
+    user.password = SecureRandom.hex(15)
+    if user.save
       session[:user_id] = user.id
-      redirect_to user
+      redirect_to programs_path
     else
       redirect_to root_path
     end
