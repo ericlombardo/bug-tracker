@@ -38,33 +38,33 @@ class SessionsController < ApplicationController
       redirect_to root_path
     end
   end
-
+  
   def destroy
     session.delete :user_id # removes user_id from session hash
     redirect_to root_path  # redirects to login page
   end
- 
+  
   private
-
+  
   def session_params  # ensures that only user with email and password attributes are accepted
     params.require(:user).permit(:email, :password)
   end 
-
+  
   def auth_hash
     request.env["omniauth.auth"]
   end
-
+  
   def assign_user_attributes(user)
-    user.uid = auth_hash[:uid]
-    user.provider = auth_hash[:provider]
+    # user.uid = auth_hash[:uid]
+    # user.provider = auth_hash[:provider]
     user.name = auth_hash[:info][:name]
-    user.role = find_role(user) # assign role based on provider => assign_role method => git = "dev" google = "client"
+    user.role = find_role(auth_hash[:provider]) # assign role based on provider => assign_role method => git = "dev" google = "client"
     user.password = SecureRandom.hex(15)
   end
 
-  def find_role(user)
-    "dev" if user.provider == "github"
-    "client" if user.provider == "google_oauth2" 
+  def find_role(provider)
+    "dev" if provider == "github"
+    "client" if provider == "google_oauth2" 
   end
 end
 
