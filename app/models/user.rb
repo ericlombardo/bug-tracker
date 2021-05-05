@@ -18,7 +18,11 @@ class User < ApplicationRecord
   scope :get_devs, -> {where(role: "dev")} 
   scope :get_prj_managers, -> {where(role: "prj_manager")} 
 
+  private 
+
   def no_email
     !email
   end
+
+
 end
