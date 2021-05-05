@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
       redirect_to user # redirect desired view
     else  # if user not found or wrong password
       flash.alert = "Invalid Username or Password"  # put message in flash hash
-      redirect_to client_login_path  # redirect to login view to show alert
+      redirect_to employee_login_path  # redirect to login view to show alert
     end
   end
 
