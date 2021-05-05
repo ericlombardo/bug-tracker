@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   post '/employee/signup', to: "users#employee_create"
 
   # route for omniauth callback
-  get 'auth/github', as: "github_auth"
   match '/auth/:provider/callback', to: 'sessions#omniauth', via: [:get, :post]
 
   # route for user logout

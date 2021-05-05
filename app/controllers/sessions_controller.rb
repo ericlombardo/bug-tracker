@@ -28,9 +28,10 @@ class SessionsController < ApplicationController
   end
 
   def omniauth
-    user = User.find_or_create_by(uid: auth_hash[:uid], provider: auth_hash[:provider])
-    assign_user_attributes(user)
-    if user.save
+    user = User.find_or_create_by(email: auth_hash[:info][:email]) do |u|
+      assign_user_attributes(u)
+    end
+    if user.id
       session[:user_id] = user.id
       redirect_to programs_path
     else
@@ -54,15 +55,16 @@ class SessionsController < ApplicationController
   end
 
   def assign_user_attributes(user)
+    user.uid = auth_hash[:uid]
+    user.provider = auth_hash[:provider]
     user.name = auth_hash[:info][:name]
-    user.email = auth_hash[:info][:email]
     user.role = find_role(user) # assign role based on provider => assign_role method => git = "dev" google = "client"
     user.password = SecureRandom.hex(15)
   end
 
   def find_role(user)
     "dev" if user.provider == "github"
-    "client" if user.provider == "google" 
+    "client" if user.provider == "google_oauth2" 
   end
 end
 
