@@ -3,14 +3,10 @@ class ApplicationController < ActionController::Base
   include ProgramsHelper
 
   def authenticate
-    unless logged_in?
-      redirect_to root_path
-    end
+    redirect_to root_path if !logged_in?
   end
 
   def already_logged_in
-    if current_user
-      redirect_to current_user
-    end
+    redirect_to current_user if current_user
   end
 end
