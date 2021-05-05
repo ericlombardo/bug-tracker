@@ -29,10 +29,7 @@ class SessionsController < ApplicationController
 
   def omniauth
     user = User.find_or_create_by(uid: auth_hash[:uid], provider: auth_hash[:provider])
-    user.name = auth_hash[:info][:name]
-    user.email = auth_hash[:info][:email]
-    user.role = "client" # assign role based on provider => assign_role method => git = "dev" google = "client"
-    user.password = SecureRandom.hex(15)
+    assign_user_attributes(user)
     if user.save
       session[:user_id] = user.id
       redirect_to programs_path
@@ -54,6 +51,18 @@ class SessionsController < ApplicationController
 
   def auth_hash
     request.env["omniauth.auth"]
+  end
+
+  def assign_user_attributes(user)
+    user.name = auth_hash[:info][:name]
+    user.email = auth_hash[:info][:email]
+    user.role = find_role(user) # assign role based on provider => assign_role method => git = "dev" google = "client"
+    user.password = SecureRandom.hex(15)
+  end
+
+  def find_role(user)
+    "dev" if user.provider == "github"
+    "client" if user.provider == "google" 
   end
 end
 
