@@ -26,7 +26,8 @@ class BugsController < ApplicationController
     end
   end
 
-  def create 
+  def create
+    @prog = Program.find_by(id: params[:program_id])
     @bug = Bug.new(bug_params)  # create new bug instance
     if @bug.save  # make sure it is valid/saves
       redirect_to [@bug.program, @bug]  
