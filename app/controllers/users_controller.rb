@@ -52,4 +52,8 @@ class UsersController < ApplicationController
   def redirect_updated_user # redirect user based on role after update action
     current_user.role == "admin" ? (redirect_to users_path) : (redirect_to @user)
   end
+
+  def render_new_user_view # decides which view to render based user role
+    @user.role == "client" ? (render :client_new) : (render :employee_new)
+  end
 end
