@@ -11,31 +11,15 @@ class UsersController < ApplicationController
     @user = User.new(role: "client")
   end
 
-  def client_create
+  def create
     @user = User.new(user_params)
-    if @user.save
-      session[:user_id] = @user.id 
-      redirect_to programs_path
-    else
-      render :client_new
-    end
+    @user.save ? (log_user_in) : (render_new_user_view)
   end
 
   def employee_new
     @user = User.new(role: "dev")
   end
-
-  def employee_create
-
-    @user = User.new(user_params)
-    if @user.save
-      session[:user_id] = @user.id 
-      redirect_to @user
-    else
-      render :employee_new
-    end
-  end
-
+  
   def show
     @user = User.find_by(id: params[:id])
   end

@@ -5,13 +5,13 @@ Rails.application.routes.draw do
   get '/client/login', to: "sessions#client_new"  
   post '/client/login', to: "sessions#create"
   get '/client/signup', to: "users#client_new"
-  post '/client/signup', to: "users#client_create"
+  post '/client/signup', to: "users#create"
 
   # routes for employee login and signup
   get '/employee/login', to: "sessions#employee_new"
   post '/employee/login', to: "sessions#create"
   get '/employee/signup', to: "users#employee_new"
-  post '/employee/signup', to: "users#employee_create"
+  post '/employee/signup', to: "users#create"
 
   # route for omniauth callback
   match '/auth/:provider/callback', to: 'sessions#omniauth', via: [:get, :post]

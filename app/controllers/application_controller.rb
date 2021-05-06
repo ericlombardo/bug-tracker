@@ -14,15 +14,22 @@ class ApplicationController < ActionController::Base
   def authentic_user?
     @user && @user.authenticate(params[:password])
   end
+
   def log_user_in
     session[:user_id] = @user.id # assign user id to session hash
     redirect_logged_in # redirect desired view
   end
+
   def redirect_invalid_user
     flash.alert = "Invalid Username or Password. Please try again"  # put message in flash hash
     redirect_to root_path  # redirect to root path
   end
+
   def redirect_logged_in 
     @user.role == "client" ? (redirect_to programs_path) : (redirect_to @user)
+  end
+  
+  def render_new_user_view
+    @user.role == "client" ? (render :client_new) : (render :employee_new)
   end
 end
