@@ -20,15 +20,15 @@ class ApplicationController < ActionController::Base
     redirect_logged_in # redirect desired view
   end
 
-  def redirect_invalid_user
-    flash.alert = "Invalid Username or Password. Please try again"  # put message in flash hash
-    redirect_to root_path  # redirect to root path
-  end
-
   def redirect_logged_in 
     @user.role == "client" ? (redirect_to programs_path) : (redirect_to @user)
   end
-  
+
+  def redirect_invalid_user
+    flash.alert = "Invalid Username or Password. Please try again"  # put message in flash hash
+    redirect_to root_path  
+  end
+
   def render_new_user_view
     @user.role == "client" ? (render :client_new) : (render :employee_new)
   end
