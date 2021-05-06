@@ -10,19 +10,11 @@ class SessionsController < ApplicationController
     authentic_user? ? (log_user_in) : (redirect_invalid_user) # make sure user exists and password matches 
   end
   
-
-
   def omniauth
-    user = User.find_or_create_by(email: auth_hash[:info][:email]) do |u|
+    @user = User.find_or_create_by(email: auth_hash[:info][:email]) do |u|
       assign_user_attributes(u)
     end
-    user.password = SecureRandom.hex(15)
-    if user.save
-      session[:user_id] = user.id
-      user.role == "client" ? (redirect_to programs_path) : (redirect_to user)
-    else
-      redirect_to root_path
-    end
+    @user.id ? (log_user_in) : (redirect_to root_path)
   end
   
   def destroy
@@ -44,10 +36,11 @@ class SessionsController < ApplicationController
     user.uid = auth_hash[:uid]
     user.provider = auth_hash[:provider]
     user.name = auth_hash[:info][:name]
-    user.role = find_role # assign role based on provider => assign_role method => git = "dev" google = "client"
+    user.role = oauth_find_role # assign role based on provider => assign_role method => git = "dev" google = "client"
+    user.password = SecureRandom.hex(15)
   end
 
-  def find_role
+  def oauth_find_role
     if auth_hash[:provider] == "github"
       "dev"
     elsif auth_hash[:provider] == "google_oauth2" 
