@@ -3,13 +3,13 @@ Rails.application.routes.draw do
 
   # routes for client login and signup
   get '/client/login', to: "sessions#client_new"  
-  post '/client/login', to: "sessions#client_create"
+  post '/client/login', to: "sessions#create"
   get '/client/signup', to: "users#client_new"
   post '/client/signup', to: "users#client_create"
 
   # routes for employee login and signup
   get '/employee/login', to: "sessions#employee_new"
-  post '/employee/login', to: "sessions#employee_create"
+  post '/employee/login', to: "sessions#create"
   get '/employee/signup', to: "users#employee_new"
   post '/employee/signup', to: "users#employee_create"
 

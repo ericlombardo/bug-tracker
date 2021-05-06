@@ -5,27 +5,12 @@ class SessionsController < ApplicationController
   # welcome | client_new | employee_new 
   # actions above have nothing in them, don't need to be in controller
 
-  def client_create
-    user = User.find_by(email: params[:email])  # find the user in database using email
-    if user && user.authenticate(params[:password]) # make sure user exists and password matches
-      session[:user_id] = user.id # assign user id to session hash
-      redirect_to programs_path # redirect desired view
-    else  # if user not found or wrong password
-      flash.alert = "Invalid Username or Password"  # put message in flash hash
-      redirect_to client_login_path  # redirect to login view to show alert
-    end
+  def create
+    @user = User.find_by(email: params[:email])  # find the user in database using email
+    authentic_user? ? (log_user_in) : (redirect_invalid_user) # make sure user exists and password matches 
   end
+  
 
-  def employee_create
-    user = User.find_by(email: params[:email])  # find the user in database using email
-    if user && user.authenticate(params[:password]) # make sure user exists and password matches
-      session[:user_id] = user.id # assign user id to session hash
-      redirect_to user # redirect desired view
-    else  # if user not found or wrong password
-      flash.alert = "Invalid Username or Password"  # put message in flash hash
-      redirect_to employee_login_path  # redirect to login view to show alert
-    end
-  end
 
   def omniauth
     user = User.find_or_create_by(email: auth_hash[:info][:email]) do |u|
@@ -45,7 +30,7 @@ class SessionsController < ApplicationController
     redirect_to root_path  # redirects to login page
   end
   
-  private
+  private # where do these go? thought it would be controller, but sessions doesn't have controller
   
   def session_params  # ensures that only user with email and password attributes are accepted
     params.require(:user).permit(:email, :password)
