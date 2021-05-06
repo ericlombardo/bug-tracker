@@ -7,14 +7,14 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:email])  # find the user in database using email
-    authentic_user? ? (log_user_in) : (redirect_invalid_user) # make sure user exists and password matches 
+    authentic_user? ? (log_user_in) : (redirect_invalid_user) # #au?, lui, riu(appcontroller)
   end
   
   def omniauth
     @user = User.find_or_create_by(email: auth_hash[:info][:email]) do |u|
-      assign_user_attributes(u)
+      assign_user_attributes(u) #aua(.)
     end
-    @user.id ? (log_user_in) : (redirect_to root_path)
+    @user.id ? (log_user_in) : (redirect_to root_path)  #lui(appcontroller)
   end
   
   def destroy
@@ -24,19 +24,19 @@ class SessionsController < ApplicationController
   
   private # where do these go? thought it would be controller, but sessions doesn't have controller
   
-  def session_params  # ensures that only user with email and password attributes are accepted
+  def session_params  # strong params for client/employee login
     params.require(:user).permit(:email, :password)
   end 
   
-  def auth_hash
+  def auth_hash # oauth response
     request.env["omniauth.auth"]
   end
   
-  def assign_user_attributes(user)
+  def assign_user_attributes(user) # assigns oauth user attributes
     user.uid = auth_hash[:uid]
     user.provider = auth_hash[:provider]
     user.name = auth_hash[:info][:name]
-    user.role = oauth_find_role # assign role based on provider => assign_role method => git = "dev" google = "client"
+    user.role = oauth_find_role #ofr(.)
     user.password = SecureRandom.hex(15)
   end
 
