@@ -56,8 +56,8 @@ class SessionsController < ApplicationController
   end
   
   def assign_user_attributes(user)
-    # user.uid = auth_hash[:uid]
-    # user.provider = auth_hash[:provider]
+    user.uid = auth_hash[:uid]
+    user.provider = auth_hash[:provider]
     user.name = auth_hash[:info][:name]
     user.role = find_role # assign role based on provider => assign_role method => git = "dev" google = "client"
   end
