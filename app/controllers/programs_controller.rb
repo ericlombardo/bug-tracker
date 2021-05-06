@@ -1,17 +1,8 @@
 class ProgramsController < ApplicationController
-  before_action :authenticate
+  before_action :authenticate # makes sure user is logged in
   
   def index
-    if params[:user_id] 
-      if params[:user_id].to_i == current_user.id
-        @user = User.find_by(id: params[:user_id])
-        @programs = @user.programs
-      else
-        redirect_to user_programs_path(current_user), alert: "These are your programs"
-      end
-    else
-      @programs = Program.all
-    end
+    nested_user? ? (show_user_programs) : (@programs = Program.all) #nu?, sup(.)
   end
 
   def show # write helper methods in model like get_active_count that return instance variablle
@@ -60,5 +51,18 @@ class ProgramsController < ApplicationController
 
   def program_params
     params.require(:program).permit(:name, :description, :status, :opened_date, :closed_date, :logo, user_ids: [])
+  end
+
+  def show_user_programs  # assign user and programs based on if nested hash or not
+    if nested_user? == current_user.id  #nu?(.)
+      @user = User.find_by(id: params[:user_id])
+      @programs = @user.programs
+    else
+      redirect_to user_programs_path(current_user), alert: "These are your programs"
+    end
+  end
+
+  def nested_user
+    params[:user_id].to_i
   end
 end
