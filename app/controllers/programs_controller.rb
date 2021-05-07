@@ -12,19 +12,13 @@ class ProgramsController < ApplicationController
 
   def new
     @program = Program.new
-    @devs = User.get_devs # collect all users where role == "dev"
-    @prj_managers = User.get_prj_managers # collect all users where role == "prj_manager"
+    get_employees #ge(.) sets @devs and @prj_managers to all devs and prj_managers 
   end
 
-  def create
+  def create # show errors if redirect
     @program = Program.new(program_params)
-    if @program.save
-      redirect_to @program
-    else                  
-      # check routing when validations in place
-      # make sure field with errors div and alerts show
-      redirect_to new_program_path  
-    end
+    get_employees #ge(.) sets @devs and @prj_managers to all devs and prj_managers 
+    @program.save ? (redirect_to @program) : (render :new)
   end
 
   def edit
@@ -60,5 +54,10 @@ class ProgramsController < ApplicationController
 
   def nested_user?
     params[:user_id]
+  end
+
+  def get_employees
+    @devs = User.get_devs # collect all users where role == "dev"
+    @prj_managers = User.get_prj_managers # collect all users where role == "prj_manager"
   end
 end

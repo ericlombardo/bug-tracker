@@ -24,5 +24,4 @@ class User < ApplicationRecord
   def no_email
     !email
   end
-
 end
