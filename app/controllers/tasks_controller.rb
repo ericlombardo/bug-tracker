@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  # make sure user is logged in, nested route, and correct user
   before_action :authenticate, :check_user
 
   def index
@@ -12,28 +13,20 @@ class TasksController < ApplicationController
   
   def create
     @task = Task.new(task_params)
-    if @task.save
-      redirect_to user_task_path(current_user, @task)
-    else
-      render :new
-    end
+    @task.save ? (redirect_to user_task_path(current_user, @task)) :(render :new)
   end
+
   def edit
     @task = Task.find_by(id: params[:id])
   end
+
   def update
     @task = Task.find_by(id: params[:id])
-    if @task.update(task_params)
-      redirect_to user_task_path(@task.user, @task)
-    else
-      render :edit
-    end
+    @task.update(task_params) ? (redirect_to user_task_path(@task.user, @task)) : (render :edit)
   end
 
   def show
-    if params[:user_id]
-      @task = Task.find_by(id: params[:id])
-    end
+    @task = Task.find_by(id: params[:id])
   end
 
   def destroy
