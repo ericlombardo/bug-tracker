@@ -1,6 +1,4 @@
-bug index
-<h1><%= "#{@program.name}'s Bugs" if @program %></h1> <!-- helper to decide title-->
-<h1><%= "#{@user.name}'s Bugs" if @user %></h1>
+<%= render partial: 'bug_title', locals: {title: choose_title(@program, @user)} %>
 
 <% if @bugs %>
   <% @bugs.each do |bug| %>
@@ -11,6 +9,4 @@ bug index
   <% end %>
 <% end %>
 
-<% if @program %>
-  <%= link_to "Create New Bug for #{@program.name}", new_program_bug_path(@program), class: "btn btn-primary" %>
-<% end %>
+<%= link_to("Report Bug for #{@program.name}", new_program_bug_path(@program), class: "btn btn-sm btn-primary") if @program %>
