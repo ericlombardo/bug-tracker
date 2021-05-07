@@ -8,11 +8,11 @@ class UsersController < ApplicationController
   end
   
   def client_new
-    @user = User.new(role: "client")
+    @user = User.new(role: "Client")
   end
 
   def employee_new
-    @user = User.new(role: "dev")
+    @user = User.new(role: "Developer")
   end
 
   def create
@@ -51,10 +51,10 @@ class UsersController < ApplicationController
   end
 
   def redirect_updated_user # redirect user based on role after update action
-    current_user.role == "admin" ? (redirect_to users_path) : (redirect_to @user)
+    current_user.role == "Admin" ? (redirect_to users_path) : (redirect_to @user)
   end
 
   def render_new_user_view # decides which view to render based user role
-    @user.role == "client" ? (render :client_new) : (render :employee_new)
+    @user.role == "Client" ? (render :client_new) : (render :employee_new)
   end
 end

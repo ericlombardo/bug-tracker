@@ -15,8 +15,8 @@ class User < ApplicationRecord
   validates :email, uniqueness: {message: "must be unique to continue"}, format: { with: /.{1,}@[^.]{1,}/, message: "is not valid"}, unless: :no_email
   
   # scope methods
-  scope :get_devs, -> {where(role: "dev")} 
-  scope :get_prj_managers, -> {where(role: "prj_manager")} 
+  scope :get_devs, -> {where(role: "Developer")} 
+  scope :get_prj_managers, -> {where(role: "Project Manager")} 
 
 
   private ##################################################################

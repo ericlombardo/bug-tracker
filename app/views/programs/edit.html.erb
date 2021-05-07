@@ -3,7 +3,7 @@
 <%= render partial: 'layouts/errors', locals: {object: @program} %>
 
 <%= form_with model: @program do |f| %>
-  <%= f.label :name, "Project Name:" %> <!-- !!render project_info partial -->
+  <%= f.label :name, "Program Name:" %> <!-- !!render project_info partial -->
   <%= f.text_field :name, required: true %>
   <br>
   <%= f.label :description, "Description:" %>

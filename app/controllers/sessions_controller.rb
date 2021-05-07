@@ -42,9 +42,9 @@ class SessionsController < ApplicationController
 
   def oauth_find_role
     if auth_hash[:provider] == "github"
-      "dev"
+      "Developer"
     elsif auth_hash[:provider] == "google_oauth2" 
-      "client" 
+      "Client" 
     end
   end
 end

@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_logged_in # redirect to programs view or show view for user
-    @user.role == "client" ? (redirect_to programs_path) : (redirect_to @user)
+    @user.role == "Client" ? (redirect_to programs_path) : (redirect_to @user)
   end
 
   def redirect_invalid_user # send invalid user to root path with message
