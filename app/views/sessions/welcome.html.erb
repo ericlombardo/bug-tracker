@@ -1,3 +1,5 @@
 welcome page root
-<a href="<%= client_login_path %>" class="btn btn-primary">Client</a>
-<a href="<%= employee_login_path %>" class="btn btn-primary">Employee</a>
+
+<%= link_to "Client", client_login_path, class: "btn btn-primary" %>
+<%= link_to "Employee", employee_login_path, class: "btn btn-primary" %>
+
