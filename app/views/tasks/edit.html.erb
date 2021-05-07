@@ -1,3 +1,7 @@
+<h1>Edit Task</h1>
+
+<%= render partial: 'layouts/errors', locals: {object: @task} %>
+
 <%= form_with model: [@task.user, @task] do |f| %>
   <%= f.label :title, "Title: " %>
   <%= f.text_field :title %><br>

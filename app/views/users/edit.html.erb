@@ -1,12 +1,7 @@
 <h1>Edit Employee Info</h1>
 
-<% if @user && @user.errors.any? %>
-  <ul>
-    <% @user.errors.full_messages.each do |mes| %>
-      <li><%= mes %></li>
-    <% end %>
-  </ul>
-<% end %>  
+<%= render partial: 'layouts/errors', locals: {object: @user} %>
+
 <%= form_with model: @user do |f| %>  <!-- show errors for user instance if present -->
 
   <%= f.label :name %>  <!-- display user input fields for new user -->

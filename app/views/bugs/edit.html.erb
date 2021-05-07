@@ -1,5 +1,7 @@
 <h1><%= "Bug #{@bug.id} for #{@bug.program.name}" %></h1>
 
+<%= render partial: 'layouts/errors', locals: {object: @bug} %>
+
 <%= form_with model: ([@bug.program, @bug]) do |f| %>  <!-- build bug form with needed attributes-->
   <%= f.label :status, "Status: " %>
   <%= f.select :status, ["pending", "active", "closed"], include_blank: true %> <!-- hidden field for created attributed-->
