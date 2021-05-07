@@ -1,7 +1,6 @@
 class Program < ApplicationRecord
   include ScopeMethods  # pulls in scope methods from app/models/concerns
   
-
   # associations
   has_many :programs_users
   has_many :users, through: :programs_users
@@ -12,7 +11,11 @@ class Program < ApplicationRecord
   #validations
   validates :name, :status, :description, :opened_date, presence: true
 
-  def bug_count(status)
-    self.bugs.where("status == ?", status).count 
+  def get_all_bugs
+    bugs = {
+      active: self.bugs.where("status == ?", "active"),
+      pending: self.bugs.where("status == ?", "pending"),
+      closed: self.bugs.where("status == ?", "closed")
+    }
   end
 end

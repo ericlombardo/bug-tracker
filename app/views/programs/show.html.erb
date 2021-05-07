@@ -1,9 +1,7 @@
 Program show
-<h3>Pending Bugs: <%= @pend_bug_count %></h3>
-
-<h3>Active Bugs: <%= @active_bug_count %></h3>
-
-<h3>Closed Bugs: <%= @closed_bug_count %></h3>
+<% @bugs.each do |k, v| %> <!-- make this a partial and render a collect for bugs-->
+  <h3><%= "#{k.capitalize} Bugs: #{v.count}" %></h3>
+<% end %>
 
 <h5>Opened: <%= opened_date %></h5>
 
@@ -14,13 +12,13 @@ Program show
 <h5>Description:</h5>
 <%= @program.description %>
 
-<h3>Project Manager:</h3>
-<% @prj_managers.each do |pm| %>
+<h3>Project Manager:</h3> <!-- make this a partial and render a collect for bugs-->
+<% @program.users.get_prj_managers.each do |pm| %>
   <%= pm.name %><br>
 <% end %>
 
-<h3>Developers:</h3>
-<% @devs.each do |d| %>
+<h3>Developers:</h3>  <!-- make this a partial and render a collect for bugs-->
+<% @program.users.get_devs.each do |d| %>
   <%= d.name %><br>
 <% end %>
 <br>

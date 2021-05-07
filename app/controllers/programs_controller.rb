@@ -7,11 +7,7 @@ class ProgramsController < ApplicationController
 
   def show # write helper methods in model like get_active_count that return instance variablle
     @program = Program.find_by(id: params[:id])
-    @active_bug_count = @program.bug_count("active")
-    @pend_bug_count = @program.bug_count("pending")
-    @closed_bug_count = @program.bug_count("closed")
-    @devs = @program.users.where(role: "dev")
-    @prj_managers = @program.users.where(role: "prj_manager")
+    @bugs = @program.get_all_bugs
   end
 
   def new
@@ -54,7 +50,7 @@ class ProgramsController < ApplicationController
   end
 
   def show_user_programs  # assign user and programs based on if nested hash or not
-    if nested_user? == current_user.id  #nu?(.)
+    if nested_user?.to_i == current_user.id  #nu?(.)
       @user = User.find_by(id: params[:user_id])
       @programs = @user.programs
     else
@@ -62,7 +58,7 @@ class ProgramsController < ApplicationController
     end
   end
 
-  def nested_user
-    params[:user_id].to_i
+  def nested_user?
+    params[:user_id]
   end
 end
