@@ -1,0 +1,12 @@
+<%= form_with model: @user, url: client_signup_path  do |f| %>  
+  
+  <%= render partial: 'layouts/errors', locals: {object: @user} %>
+
+  <%= render partial: 'name_field', locals: {f: f} %>
+
+  <%= render partial: 'login_form', locals: {f: f, submit_text: "Signup"} %>
+  
+  <%= f.hidden_field :role %>
+<% end %>
+
+<%= render 'users/google_oauth' %>
