@@ -31,5 +31,12 @@ Rails.application.routes.draw do
   resources :programs do
     resources :bugs
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # catch all that excludes active storage calls
+  get '*all', to: 'sessions#welcome', constraints: lambda { |req|
+  req.path.exclude? 'rails/active_storage'
+}
+
+# For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+# found fix to catch all https://github.com/rails/rails/issues/31228
 end
