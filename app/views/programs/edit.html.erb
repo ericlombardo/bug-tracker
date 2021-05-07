@@ -1,5 +1,11 @@
 <h1>Edit <%= @program.name %></h1>
-
+<% if @program.errors.any? %>
+  <ul>
+    <% @program.errors.full_messages.each do |mes| %>
+      <li><%= mes %></li>
+    <% end %>
+  </ul>
+<% end %> 
 <%= form_with model: @program do |f| %>
   <%= f.label :name, "Project Name:" %> <!-- !!render project_info partial -->
   <%= f.text_field :name, required: true %>

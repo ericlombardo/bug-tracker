@@ -9,7 +9,7 @@ class Program < ApplicationRecord
   has_one_attached :logo
 
   #validations
-  validates :name, :status, :description, :opened_date, presence: true
+  validates :name, :status, :description, presence: true
 
   def get_all_bugs
     bugs = {
