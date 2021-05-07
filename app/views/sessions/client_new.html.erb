@@ -1,12 +1,11 @@
 <h1>Login To Report A Bug</h1>
+
+<%= render 'layouts/flash' %>
+
 <%= form_with url: client_login_path  do |f| %>  
-  <%= f.label :email %> 
-  <%= f.email_field :email, {required: true} %>
-  <br>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <br>
-  <%= f.submit "Login" %>
+  <%= render partial: 'users/login_form', locals: {f: f, submit_text: "Login"} %>
 <% end %>
-<p>First time reporting a bug? <a href="<%= client_signup_path %>">Signup Here</a></p>
-<%= button_to 'Google', '/auth/google_oauth2' %>
+
+<%= render partial: 'users/signup_link', locals: {path: client_signup_path} %>
+
+<%= render 'users/google_oauth' %>

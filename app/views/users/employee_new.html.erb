@@ -1,26 +1,3 @@
-employee new signup
 <h1>First Time Employee Signup</h1>
 
-<!-- alert errors if present -->
-<%= form_with model: @user, url: employee_signup_path  do |f| %>  <!-- show errors for user instance if present -->
-  <% if @user.errors.any? %>
-    <ul>
-      <% @user.errors.full_messages.each do |mes| %>
-        <li><%= mes %></li>
-      <% end %>
-    </ul>
-  <% end %>  
-
-  <%= f.label :name %>  <!-- display user input fields for new user -->
-  <%= f.text_field :name %>
-  <br>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  <br>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <br>
-  <%= f.hidden_field :role %>
-  <%= f.submit "Signup" %>
-<% end %>
-<%= button_to 'Github', '/auth/github' %>
+<%= render 'signup_form' %>

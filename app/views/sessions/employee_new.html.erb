@@ -1,14 +1,12 @@
-employee new login
-<h1>Login Developer</h1>
-<%= form_with url: employee_login_path  do |f| %>  <!-- show errors for user instance if present --> 
-  <%= f.label :email %> <!-- display user input fields for login -->
-  <%= f.email_field :email, {required: true} %>
-  <br>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <br>
-  <%= f.submit "Login" %>
+<h1>Employee Login</h1>
+
+<%= render 'layouts/flash' %>
+
+<%= form_with url: employee_login_path  do |f| %>  
+  <%= render partial: 'users/login_form', locals: {f: f, submit_text: "Login"} %>
 <% end %>
-<p>First time reporting a bug? <a href="<%= employee_signup_path %>">Signup Here</a></p>
-<%= button_to 'Github', '/auth/github' %>
+
+<%= render partial: 'users/signup_link', locals: {path: employee_signup_path} %>
+
+<%= render 'users/github_oauth' %>
   
