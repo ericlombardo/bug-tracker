@@ -1,5 +1,5 @@
 <h1>Edit Employee Info</h1>
-<!-- alert errors if present -->
+
 <% if @user && @user.errors.any? %>
   <ul>
     <% @user.errors.full_messages.each do |mes| %>
@@ -16,7 +16,7 @@
   <%= f.email_field :email, size: "45" %>
   <br>
   <%= f.label :role %>
-  <%= f.select :role , ["dev", "project manager", "admin"] %>
+  <%= f.select :role , ["Client", "Developer", "Project Manager", "Admin"] %>
 
   <%= f.submit "Update Employee" %>
 <% end %>
