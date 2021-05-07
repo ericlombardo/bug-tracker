@@ -1,7 +1,5 @@
 <h1>Login To Report A Bug</h1>
 
-<%= render 'layouts/flash' %>
-
 <%= form_with url: client_login_path  do |f| %>  
   <%= render partial: 'users/login_form', locals: {f: f, submit_text: "Login"} %>
 <% end %>
