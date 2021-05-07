@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     @users = User.where("name LIKE ?", "%#{params[:query]}%")
   end
 
-  private
+  private ##################################################################
 
   def user_params # strong params
     params.require(:user).permit(:name, :email, :password, :role)

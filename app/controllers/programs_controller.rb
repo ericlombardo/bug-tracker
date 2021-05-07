@@ -41,7 +41,7 @@ class ProgramsController < ApplicationController
     end
   end
   
-  private
+  private ##################################################################
 
   def program_params
     params.require(:program).permit(:name, :description, :status, :opened_date, :closed_date, :logo, user_ids: [])

@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
     redirect_to root_path  # redirects to login page
   end
   
-  private # where do these go? thought it would be controller, but sessions doesn't have controller
+  private ##################################################################
   
   def session_params  # strong params for client/employee login
     params.require(:user).permit(:email, :password)

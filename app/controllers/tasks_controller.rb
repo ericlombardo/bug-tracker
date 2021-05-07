@@ -34,7 +34,7 @@ class TasksController < ApplicationController
     redirect_to user_tasks_path(current_user)
   end
 
-  private
+  private ##################################################################
   
   def task_params
     params.require(:task).permit(:title, :content, :urgency, :user_id, :program_id)
