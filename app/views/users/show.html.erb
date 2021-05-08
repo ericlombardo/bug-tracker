@@ -5,9 +5,6 @@
 <%= "Bugs #{@user.bugs.count}" %>
 
 <h2>Top - Tasks</h2>
-
 <% @user.tasks.each do |t| %>
-  <%= t.program.name %><br>
-  <%= t.title %><br>
-  <%= t.urgency %><br><br>
+  <%= render partial: 'user_info', locals: {t: t} %>
 <% end %>

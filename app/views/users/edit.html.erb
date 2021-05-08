@@ -4,14 +4,12 @@
 
 <%= form_with model: @user do |f| %>  <!-- show errors for user instance if present -->
 
-  <%= f.label :name %>  <!-- display user input fields for new user -->
-  <%= f.text_field :name, size: "40" %>
-  <br>
+  <%= render partial: 'name_field', locals: {f: f} %>
+
   <%= f.label :email %>
-  <%= f.email_field :email, size: "45" %>
-  <br>
-  <%= f.label :role %>
-  <%= f.select :role , ["Client", "Developer", "Project Manager", "Admin"] %>
+  <%= f.email_field :email, size: "45" %><br>
+
+  <%= render(partial: 'role_field', locals: {f: f}) if admin?%>
 
   <%= f.submit "Update Employee" %>
 <% end %>
