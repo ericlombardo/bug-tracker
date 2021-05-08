@@ -1,26 +1,11 @@
 <h1>Report New Bug for <%= @bug.program.name %></h1>
+
 <%= render partial: 'layouts/errors', locals: {object: @bug} %>
 
-
 <%= form_with model: ([@bug.program, @bug]) do |f| %>  <!-- build bug form with needed attributes-->
-  <%= f.label :priority, "Priority: " %>           
-  <%= f.select :priority, ["low", "normal", "important", "critical"], include_blank: true %>
-  <br>
-  <%= f.label :category, "Type: " %>
-  <%= f.select :category, ["functional", "performance", "usability", "compatibility", "security"], {include_blank: true }, required: true %>
-  <br>
-  <%= f.label :overview %><br>
-  <%= f.text_area :overview, size: "20x10", required: true %>
-  <br>
-  <%= f.label :description %><br>
-  <%= f.text_area :description, size: "20x10", required: true %>
-  <br>
-  <%= f.label :notes %><br>
-  <%= f.text_area :notes, size: "20x10" %>
-  <br>
-  <%= f.label :next_steps %><br>
-  <%= f.text_area :next_steps, size: "20x10" %>
-  <br>
+  
+  <%= render partial: 'form', locals: {f: f} %>
+  
   <!-- DO NOT INCLUDE IN UPDATE FORM -->
   <%= f.hidden_field :created, value: Date.current %> <!-- hidden field for created attributed-->
   <%= f.hidden_field :program_id, value: @bug.program.id %>  <!-- hidden field for program id-->

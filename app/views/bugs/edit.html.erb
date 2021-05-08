@@ -1,31 +1,12 @@
-<h1><%= "Bug #{@bug.id} for #{@bug.program.name}" %></h1>
+<h1><%= "Update Bug ##{@bug.id} for #{@bug.program.name}" %></h1>
 
 <%= render partial: 'layouts/errors', locals: {object: @bug} %>
 
-<%= form_with model: ([@bug.program, @bug]) do |f| %>  <!-- build bug form with needed attributes-->
-  <%= f.label :status, "Status: " %>
-  <%= f.select :status, ["pending", "active", "closed"], include_blank: true %> <!-- hidden field for created attributed-->
-  <br>
-  <%= f.label :priority, "Priority: " %>           
-  <%= f.select :priority, ["low", "normal", "important", "critical"], include_blank: true %>
-  <br>
-  <%= f.label :category, "Type: " %>
-  <%= f.select :category, ["functional", "performance", "usability", "compatibility", "security"], {include_blank: true}, required: true %>
-  <br>
-  <%= f.label :overview %><br>
-  <%= f.text_area :overview, size: "20x10", required: true %>
-  <br>
-  <%= f.label :description %><br>
-  <%= f.text_area :description, size: "20x10", required: true %>
-  <br>
-  <%= f.label :notes %><br>
-  <%= f.text_area :notes, size: "20x10" %>
-  <br>
-  <%= f.label :next_steps %><br>
-  <%= f.text_area :next_steps, size: "20x10" %>
-  <br>
-  <%= f.label :update_for_client %><br>
-  <%= f.text_area :update_for_client, size: "20x10" %>
-  <br>
+<%= form_with model: ([@bug.program, @bug]) do |f| %>  
+  
+  <%= render partial: 'status_field', locals: {f: f} %>
+  <%= render partial: 'form', locals: {f: f} %>
+  <%= render partial: 'client_update_field', locals: {f: f} %>
+  
   <%= f.submit "Update Bug" %>
 <% end %>
