@@ -3,18 +3,10 @@
 <%= render partial: 'layouts/errors', locals: {object: @task} %>
 
 <%= form_with model: [@task.user, @task] do |f| %>
-  <%= f.label :title, "Title: " %>
-  <%= f.text_field :title %><br>
-  
-  <%= f.label :urgency, "Urgency: " %>
-  <%= f.select :urgency, ["low", "normal", "high"], include_blank: true %><br>
-  
-  <%= f.label :content, "Content: "%><br>
-  <%= f.text_area :content, size: "50 x 10" %><br>
+  <%= render partial: 'form', locals: {f: f} %>
 
   <%= f.label :program_id, "What program is task related to: " %>
   <%= f.collection_select :program_id, current_user.programs, :id, :name, {include_blank: true} %><br>
-
   
   <%= f.hidden_field :user_id %>
  
