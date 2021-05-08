@@ -1,0 +1,19 @@
+<h5>Opened: <%= opened_date %></h5> <!--od(proghelper)-->
+
+<h5>Status: <%= program.status %></h5>
+
+<h5>Closed: <%= closed_date %></h5> <!--cd(proghelper)-->
+
+<h5>Description:</h5>
+<%= program.description %>
+
+<h3>Project Manager:</h3> <!-- make this a partial and render a collect for bugs-->
+<% program.users.get_prj_managers.each do |pm| %>
+  <%= pm.name %><br>
+<% end %>
+
+<h3>Developers:</h3>  <!-- make this a partial and render a collect for bugs-->
+<% program.users.get_devs.each do |d| %>
+  <%= d.name %><br>
+<% end %>
+<br>

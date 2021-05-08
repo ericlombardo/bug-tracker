@@ -2,13 +2,13 @@ class ProgramsController < ApplicationController
   before_action :authenticate # makes sure user is logged in
   
   def index
-    nested_user? ? (show_user_programs) : (@programs = Program.all) #nu?, sup(.)
+    nested_user? ? (show_user_programs) : (@programs = Program.supported) #nu?, sup(.)
   end
 
   def show 
     @program = Program.find_by(id: params[:id])
     @bugs = @program.get_all_bugs #gab(ProgramModel) 
-    #=> hash {active: [instances], pending: [instances], closed: [instances]}
+    #=> {active: [instances], pending: [instances], closed: [instances]}
   end
 
   def new
@@ -50,7 +50,7 @@ class ProgramsController < ApplicationController
   def show_user_programs  # assign @user and @programs based on if nested hash or not
     if nested_user?.to_i == current_user.id  #nu?(.)
       @user = User.find_by(id: params[:user_id])
-      @programs = @user.programs
+      @programs = @user.programs.supported
     else
       redirect_to user_programs_path(current_user), alert: "These are your programs"
     end

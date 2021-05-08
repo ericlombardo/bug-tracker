@@ -11,6 +11,12 @@ class Program < ApplicationRecord
   #validations
   validates :name, :status, :description, presence: true
 
+  # scope methods
+  def self.supported
+    self.where(closed_date: nil)
+  end
+
+  #instance methods
   def get_all_bugs
     bugs = {
       active: self.bugs.where("status == ?", "active"),

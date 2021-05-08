@@ -3,22 +3,8 @@
 <%= render partial: 'layouts/errors', locals: {object: @program} %>
 
 <%= form_with model: @program do |f| %>
-  <%= f.label :name, "Program Name:" %> <!-- !!render project_info partial -->
-  <%= f.text_field :name, required: true %>
-  <br>
-  <%= f.label :description, "Description:" %>
-  <%= f.text_area :description, required: true %>
-  <br>
-  <h4>Development Status:</h4>  <!-- !!render dev_status partial -->
-  <%= f.radio_button :status, "develpment", required: true %>
-  <%= f.label :status, "Development" %>
-  <br>
-  <%= f.radio_button :status, "testing", required: true %>
-  <%= f.label :status, "Testing" %>
-  <br>
-  <%= f.radio_button :status, "production", required: true %>
-  <%= f.label :status, "Production" %>
-  <br>
+  <%= render partial: 'form', locals: {f: f} %>
+
   <h3>Project Managers:</h3>
   <div class="col-6 table-wrapper-scroll-y my-custom-scrollbar">
     <table class="table table-striped table-bordered table-sm">
@@ -63,11 +49,8 @@
     </table>
   </div>
   <br>
-  <%= f.label :logo, "Add or Change Logo: "%><br>
+  <%= f.label :logo, "Upload Logo: "%><br>
   <%= f.file_field :logo %><br>
-
-  <%= f.check_box "#{closed_date.to_s}", {checked: closed?, name: "program[closed_date]", unchecked_value: "N/A"}, Date.current%>
-  <%= f.label :closed_date, "Remove Support for Program" %>
-  <br>
+  <%= render partial: 'support_field', locals: {f: f} %>
   <%= f.submit "Update Program" %>
 <% end %>

@@ -1,11 +1,9 @@
-Programs index
-<ul>
-  <% if @programs.present? %>
-    <% @programs.each do |p| %>
-      <li><%= link_to p.name, p %></li>
-    <% end %>
-  <% end %>
-</ul>
+<h1>Programs Currently Supported</h1>
 
 <%= link_to("New Program", new_program_path, class: "btn btn-primary") if admin? %>
+
+<%= render @programs %>
+<h3> <%= "Currently No Programs" if !@programs.present? %> </h3>
+
+
 
