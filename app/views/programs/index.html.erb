@@ -7,5 +7,5 @@ Programs index
   <% end %>
 </ul>
 
-<%= link_to "New Project", new_program_path, class: "btn btn-primary" %>
+<%= link_to("New Program", new_program_path, class: "btn btn-primary") if admin? %>
 
