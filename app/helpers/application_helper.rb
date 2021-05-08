@@ -4,6 +4,10 @@ module ApplicationHelper
     current_user.role == "Admin"
   end
   
+  def prj_manager?
+    current_user.role == "Project Manager"
+  end
+  
   def current_user  # return user instance if logged in and present
     user ||= User.find_by(id: session[:user_id])
   end

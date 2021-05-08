@@ -1,5 +1,5 @@
 <h1><%= @program.name %></h1>
-<%= link_to "Update Program", edit_program_path, class: "btn btn-primary" %> 
+<%= link_to("Update Program", edit_program_path, class: "btn btn-primary") if admin? || prj_manager? %> 
 <%= link_to "View Bugs", program_bugs_path(@program), class: "btn btn-primary" %>
 
 <%= render partial: 'program_logo', locals: {program: @program} %>
