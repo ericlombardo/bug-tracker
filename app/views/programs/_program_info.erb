@@ -8,9 +8,6 @@
   <h4>Closed: </h4>
   <h5><%= closed_date ? (closed_date) : ("Still Supported") %></h5> <!--cd(proghelper)-->
   
-  <h4>Description:</h4>
-  <%= program.description %>
-  
   <h4>Project Manager:</h4> <!-- make this a partial and render a collect for bugs-->
   <% program.users.get_prj_managers.each do |pm| %>
     <%= pm.name %><br>
