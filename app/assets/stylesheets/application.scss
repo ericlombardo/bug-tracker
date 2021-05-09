@@ -4,6 +4,12 @@
 @import "sessions";
 @import "users";
 
+body {
+  background: rgb(30, 30, 30);
+  padding-left: 170px;
+ 
+}
+
 .container-fluid{
   padding:0;
 }
@@ -35,6 +41,38 @@
 }
 
 
+// navbar css
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+
+#sidebar {
+  width: 150px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 999;
+  background: #002c45;
+  color: #fff;
+  transition: all 0.3s;
+}
+.border {
+  border-style: solid;
+  color: rgb(209, 209, 209);
+  box-shadow: rgba(0, 196, 226, 0.58);
+}
+.white {
+  color: white;
+}
+.box {
+  width: 100px;
+  height: 300px;
+  color: white;
+}
 
 // found instructions on how set up bootstrap with rails 6 at:
 // https://blog.makersacademy.com/how-to-install-bootstrap-and-jquery-on-rails-6-da6e810c1b87
+// Found many different sources for html and bootstrap that I was able to copy and piece together
+// including startbootstrap.com and https://www.atlascode.com/blog/bootstrap-fixed-width-sidebars/
