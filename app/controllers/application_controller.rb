@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_invalid_user # send invalid user to root path with message
-    flash.danger = "Invalid Username or Password. Please try again"
+    flash.alert = "Invalid Username or Password. Please try again"
     redirect_to root_path  
   end
 end
