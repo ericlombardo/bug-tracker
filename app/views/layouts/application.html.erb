@@ -13,17 +13,16 @@
   </head>
 
   <body>
-    <br><br>
-    <div class="container">
-    <% if current_user %>
-      <ul class="nav flex-column">
-        <%= display_navbar %> <!--#dn(apphelper)-->
-      </ul>
-    <% end %>
-    
-    <%= render 'layouts/flash' %>
+    <div class="container-fluid">
+      <% if current_user %>
+        <ul class="nav flex-column">
+          <%= display_navbar %> <!--#dn(apphelper)-->
+        </ul>
+      <% end %>
+      
+      <%= render 'layouts/flash' %>
 
-    <%= yield %>
-  </div>
+      <%= yield %>
+    </div>
   </body>
 </html>

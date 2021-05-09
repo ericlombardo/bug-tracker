@@ -4,12 +4,20 @@
 @import "sessions";
 @import "users";
 
-
-.field_with_errors {
+.container-fluid{
+  padding:0;
+}
+.field-with-errors {
   background-color: red;
   display: table;
 }
-
+.bg-img{
+  background-image: url('bg_login.jpg');
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .my-custom-scrollbar {
   position: relative;
   height: 300px;
