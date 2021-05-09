@@ -1,16 +1,28 @@
-<%= f.label :name, "Program Name:" %> <!-- !!render project_info partial -->
-<%= f.text_field :name, required: true %>
-<br>
-<%= f.label :description, "Description:" %>
-<%= f.text_area :description, required: true %>
-<br>
-<h4>Development Status:</h4>  <!-- !!render dev_status partial -->
-<%= f.radio_button :status, "develpment", required: true %>
-<%= f.label :status, "Development" %>
-<br>
-<%= f.radio_button :status, "testing", required: true %>
-<%= f.label :status, "Testing" %>
-<br>
-<%= f.radio_button :status, "production", required: true %>
-<%= f.label :status, "Production" %>
-<br>
+<div class="container text-center align-content-center">
+
+  <%= f.label :name, "Program Name:" %> <br>
+  <%= f.text_field :name, required: true, size: "50" %>
+
+  <div class="row mt-3">
+    <div class="col-md-5">
+      <%= f.label :description, "Description:" %><br>
+      <%= f.text_area :description, required: true, size: "40x10" %>
+    </div>
+    <div class="col-md-7 mt-4">
+      <div class="container text-center">
+        <h4>Development Status:</h4>  <!-- !!render dev_status partial -->
+        <%= f.radio_button :status, "develpment", required: true %>
+        <%= f.label :status, "Development" %><br>
+        <%= f.radio_button :status, "testing", required: true %>
+        <%= f.label :status, "Testing" %><br>
+        <%= f.radio_button :status, "production", required: true %>
+        <%= f.label :status, "Production" %><br><br>
+        <div class="container align-content-center">
+          <%= render partial: 'logo_field', locals: {f: f} %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
