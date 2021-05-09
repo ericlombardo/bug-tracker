@@ -1,5 +1,5 @@
 <% if flash.any? %> <!-- checks for any flash messages -->
   <% flash.each do |type, mes| %> <!-- iterates through each one present-->
-    <div class="<%= type %>"><%= mes %></div> <!-- creates a div with type of alert and displays message-->
+    <div class="alert alert-danger text-center"><%= mes %></div> <!-- creates a div with type of alert and displays message-->
   <% end %>
 <% end %>

@@ -1,7 +1,5 @@
 <% if object && object.errors.any? %>
-  <ul>
-    <% object.errors.full_messages.each do |mes| %>
-      <li><%= mes %></li>
-    <% end %>
-  </ul>
+  <% object.errors.full_messages.each do |mes| %>
+    <p class="alert alert-danger"><%= mes %></p>
+  <% end %>
 <% end %>  
