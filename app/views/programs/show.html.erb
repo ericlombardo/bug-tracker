@@ -1,9 +1,25 @@
-<h1><%= @program.name %></h1>
-<%= link_to("Update Program", edit_program_path, class: "btn btn-primary") if admin? || prj_manager? %> 
-<%= link_to "View Bugs", program_bugs_path(@program), class: "btn btn-primary" %>
+<div class="container text-center text-white">
+  <div class="rounded mx-auto d-block">
+      <%= render partial: 'program_logo', locals: {program: @program} %>
+  </div>
+  <div class="colo-5">
+    <h1><%= @program.name %></h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-5">
+        <%= pie_chart(Active: @bugs[:active].count, Pending: @bugs[:pending].count, Closed: @bugs[:closed].count) %>
+        <%= link_to("Update Program", edit_program_path, class: "btn btn-sm btn-primary button mt-5") if admin? || prj_manager? %> 
+        <%= link_to "View Bugs", program_bugs_path(@program), class: "btn btn-sm btn-primary button mt-5" %>
+      </div>
+      <div class="col-7">
+        <div class="container">
+          <%= render partial: 'program_info', locals: {program: @program} %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= render partial: 'program_logo', locals: {program: @program} %>
-<%= render partial: 'bug_counts', locals: {bugs: @bugs}  %>
-<%= render partial: 'program_info', locals: {program: @program} %>
 
 

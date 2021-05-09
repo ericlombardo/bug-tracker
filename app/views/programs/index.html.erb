@@ -9,9 +9,9 @@
     <div class="container">
       <% @programs.each_slice(3) do |(p1, p2, p3)| %>
         <div class="row">
-          <div class="col-md-4"><%= render(partial: 'program', locals: {program: p1}) %></div>
-          <div class="col-md-4"><%= render(partial: 'program', locals: {program: p2}) %></div>
-          <div class="col-md-4"><%= render(partial: 'program', locals: {program: p3}) %></div>
+          <div class="col-md-4"><%= render(partial: 'program', locals: {program: p1}) if p1 %></div>
+          <div class="col-md-4"><%= render(partial: 'program', locals: {program: p2}) if p2%></div>
+          <div class="col-md-4"><%= render(partial: 'program', locals: {program: p3}) if p3%></div>
         </div>
       <% end %>
     </div>

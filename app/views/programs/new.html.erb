@@ -62,6 +62,7 @@
         </div>
       </div>
     </div>
+    <%= f.hidden_field :opened_date, value: Date.current %>
     <%= f.submit "Create New Program", class: "btn btn-primary mt-4"%>
   <% end %>
 </div>
