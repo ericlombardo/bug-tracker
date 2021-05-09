@@ -10,7 +10,7 @@
       <div class="col-5">
         <%= pie_chart(Active: @bugs[:active].count, Pending: @bugs[:pending].count, Closed: @bugs[:closed].count) %>
         <div class="row mt-3">
-          <h4>Description:</h4>
+          <h4>Description:</h4><br>
           <%= @program.description %>
         </div>
         <%= link_to("Update Program", edit_program_path, class: "btn btn-sm btn-primary button mt-5") if admin? || prj_manager? %> 
