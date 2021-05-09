@@ -14,20 +14,20 @@
 
   <body>
     <div class="container-fluid">
-      <% if current_user %>
       <%= render 'layouts/flash' %>
+      <%= yield :errors %>
+      <% if current_user %>
       <ul class="nav flex-column">
         <%= display_navbar %> <!--#dn(apphelper)-->
       </ul>
       <% else %>
-        <div class="bg-img img-fluid">
-          <%= render 'layouts/flash' %>
-          <img src="<%= asset_path('logo_login.png')%>" class="rounded mx-auto d-block" alt="logo" width="300">
-          <%= yield :login %>
-        </div>
+      <div class="bg-img img-fluid">
+        <img src="<%= asset_path('logo_login.png')%>" class="rounded mx-auto d-block" alt="logo" width="300">
+        <%= yield :login %>
+      </div>
       <% end %>
       
-
+      
       <%= yield %>
     </div>
   </body>

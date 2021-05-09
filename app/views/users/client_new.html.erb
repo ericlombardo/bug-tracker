@@ -1,6 +1,12 @@
 <% content_for :login do %>
-  <h1>Client Signup</h1>
-  <h3>Create account to report bug</h3>
-
-  <%= render 'signup_form' %>
+  <div class="container">
+    <div class="align-bottom col-6 mx-auto">
+      <div id="login_box" class="row rounded button align-bottom" style="background-color:rgba(0, 0, 0, 0.3);">
+        <h3 class="text-center">Client Signup</h3>
+        <div class="text-center">
+          <%= render 'signup_form' %>
+        </div>
+      </div>
+    </div>
+  </div> 
 <% end %>

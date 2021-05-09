@@ -1,6 +1,7 @@
 <h1>Create Program</h1>
-
-<%= render partial: 'layouts/errors', locals: {object: @program} %>
+<%= content_for :errors do %>
+  <%= render partial: 'layouts/errors', locals: {object: @program} %>
+<% end %>
 
 <%= form_with model: @program do |f| %>
   <%= render partial: 'form', locals: {f: f} %>

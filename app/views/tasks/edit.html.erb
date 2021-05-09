@@ -1,6 +1,7 @@
 <h1>Edit Task</h1>
-
-<%= render partial: 'layouts/errors', locals: {object: @task} %>
+<%= content_for :errors do %>
+  <%= render partial: 'layouts/errors', locals: {object: @task} %>
+<% end %>
 
 <%= form_with model: [@task.user, @task] do |f| %>
   <%= render partial: 'form', locals: {f: f} %>
