@@ -1,9 +1,11 @@
-<h1>Login To Report A Bug</h1>
+<% content_for :login do %>
+  <h1>Login To Report A Bug</h1>
 
-<%= form_with url: client_login_path  do |f| %>  
-  <%= render partial: 'users/login_form', locals: {f: f, submit_text: "Login"} %>
+  <%= form_with url: client_login_path  do |f| %>  
+    <%= render partial: 'users/login_form', locals: {f: f, submit_text: "Login"} %>
+  <% end %>
+
+  <%= render partial: 'users/signup_link', locals: {path: client_signup_path} %>
+
+  <%= render 'users/google_oauth' %>
 <% end %>
-
-<%= render partial: 'users/signup_link', locals: {path: client_signup_path} %>
-
-<%= render 'users/google_oauth' %>
