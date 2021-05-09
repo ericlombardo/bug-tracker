@@ -1,9 +1,10 @@
-<div class="container">
-  <div class="row text-center white mt-3">
+
+<div class="container text-center">
+  <div class="align-content-center mt-3 text-white">
     <h1>Programs Currently Supported</h1>
-    <div class="align-content-center">
-      <%= link_to("New Program", new_program_path, class: "btn btn-primary") if admin? %>
-    </div>
+  </div>
+  <div class="align-content-center mt-3">
+    <%= link_to("New Program", new_program_path, class: "btn btn-primary") if admin? %>
   </div>
   <div class="container mt-3">
     <div class="container">
