@@ -25,7 +25,7 @@ class ProgramsController < ApplicationController
     if @program = Program.find_by(id: params[:id])
       get_employees #ge(.) sets @devs and @prj_managers from all users
     else
-      redirect_to programs_path, alert: "Not an updatable program"
+      redirect_to programs_path, danger: "Not an updatable program"
     end
   end
   
@@ -52,7 +52,7 @@ class ProgramsController < ApplicationController
       @user = User.find_by(id: params[:user_id])
       @programs = @user.programs.supported
     else
-      redirect_to user_programs_path(current_user), alert: "These are your programs"
+      redirect_to user_programs_path(current_user), danger: "These are your programs"
     end
   end
 

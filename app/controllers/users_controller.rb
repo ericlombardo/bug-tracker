@@ -46,7 +46,7 @@ class UsersController < ApplicationController
 
   def check_user # before action to check if proper user or admin
     unless admin? || params[:id].to_i == current_user.id
-      redirect_to current_user, alert: "This is your account"
+      redirect_to current_user, danger: "This is your account"
     end
   end
 
