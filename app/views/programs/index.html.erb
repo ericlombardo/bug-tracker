@@ -1,9 +1,24 @@
-<h1>Programs Currently Supported</h1>
+<div class="container">
+  <div class="row text-center white mt-3">
+    <h1>Programs Currently Supported</h1>
+    <div class="align-content-center">
+      <%= link_to("New Program", new_program_path, class: "btn btn-primary") if admin? %>
+    </div>
+  </div>
+  <div class="container mt-3">
+    <div class="container">
+      <% @programs.each_slice(3) do |(p1, p2, p3)| %>
+        <div class="row">
+          <div class="col-md-4"><%= render(partial: 'program', locals: {program: p1}) %></div>
+          <div class="col-md-4"><%= render(partial: 'program', locals: {program: p2}) %></div>
+          <div class="col-md-4"><%= render(partial: 'program', locals: {program: p3}) %></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <h3> <%= "Currently No Programs" if !@programs.present? %> </h3>
 
-<%= link_to("New Program", new_program_path, class: "btn btn-primary") if admin? %>
-
-<%= render @programs %>
-<h3> <%= "Currently No Programs" if !@programs.present? %> </h3>
+</div>
 
 
 

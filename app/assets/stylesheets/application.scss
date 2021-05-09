@@ -66,13 +66,13 @@ body {
 .white {
   color: white;
 }
-.box {
-  width: 100px;
-  height: 300px;
-  color: white;
-}
+
+
 
 // found instructions on how set up bootstrap with rails 6 at:
 // https://blog.makersacademy.com/how-to-install-bootstrap-and-jquery-on-rails-6-da6e810c1b87
 // Found many different sources for html and bootstrap that I was able to copy and piece together
 // including startbootstrap.com and https://www.atlascode.com/blog/bootstrap-fixed-width-sidebars/
+
+// below gave me the each_splice to get 3 columns together while iterating
+// https://stackoverflow.com/questions/24914494/render-partial-in-two-columns-using-bootstrap
