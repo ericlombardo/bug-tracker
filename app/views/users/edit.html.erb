@@ -1,20 +1,22 @@
+ <div class="container text-center text-white">
+
+   <h1>Edit Employee Info</h1>
+   
+   <%= content_for :errors do %>
+     <%= render partial: 'layouts/errors', locals: {object: @user} %>
+   <% end %>
  
-  <h1>Edit Employee Info</h1>
-  
-  <%= content_for :errors do %>
-    <%= render partial: 'layouts/errors', locals: {object: @user} %>
-  <% end %>
+   <%= form_with model: @user do |f| %>
+ 
+       <%= render partial: 'name_field', locals: {f: f} %>
+ 
+       <%= f.label :email %>
+       <%= f.email_field :email, size: "45" %><br>
+ 
+       <%= render(partial: 'role_field', locals: {f: f}) if admin?%>
+ 
+     
+     <%= f.submit "Update Employee", class: "btn btn-primary" %>
+   <% end %>
 
-  <%= form_with model: @user do |f| %>
-
-      <%= render partial: 'name_field', locals: {f: f} %>
-
-      <%= f.label :email %>
-      <%= f.email_field :email, size: "45" %><br>
-
-      <%= render(partial: 'role_field', locals: {f: f}) if admin?%>
-
-    
-    <%= f.submit "Update Employee", class: "btn btn-primary" %>
-  <% end %>
-
+ </div> 
