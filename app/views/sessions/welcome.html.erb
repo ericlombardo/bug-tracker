@@ -1,3 +1,14 @@
-<%= link_to "Client", client_login_path, class: "btn btn-primary" %>
-<%= link_to "Employee", employee_login_path, class: "btn btn-primary" %>
+
+<% content_for :login do %>
+  <div class="container text-center">
+        <h3><%= link_to "Client", client_login_path, class: "btn btn-primary button" %></h3>
+        <h3><%= link_to "Employee", employee_login_path, class: "btn btn-primary button" %></h3>
+  </div>
+<% end %>
+
+
+
+
+
+>>>>>>> 08_bootstrap
 

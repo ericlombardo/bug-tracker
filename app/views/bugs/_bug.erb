@@ -1,6 +1,8 @@
-
-<%= bug.status %><br>
-<%= bug.priority %><br>
-<%= bug.overview %><br>
-<%= bug.category %><br><br>
+<div class="card text-center bg-secondary mt-3">
+  <h5 class="card-header"><%= "#{bug.priority}  |  #{bug.status}  | #{bug.category}" %></h5>
+  <div class="card-body">
+    <p class="card-text"><%= bug.overview %></p>
+    <a href="<%= program_bug_path(bug.program, bug)%>" class="btn btn-primary">View Bug</a>
+  </div>
+</div>
 

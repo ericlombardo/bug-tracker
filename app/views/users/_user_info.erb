@@ -1,3 +1,6 @@
-Program: <%= t.program.name %><br>
-Title: <%= t.title %><br>
-Urgency: <%= t.urgency %><br>
+<h5 class="card-header">Program: <%= t.program.name %></h5>
+<div class="card-body">
+  <h5 class="card-title"><%= t.title %></h5>
+  <p class="card-text"><%= t.content %></p>
+  <a href="<%= user_task_path(t.user, t) %>" class="btn btn-primary">View Full Tasks</a>
+</div>

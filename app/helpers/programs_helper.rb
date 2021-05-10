@@ -9,10 +9,10 @@ module ProgramsHelper
   end
   
   def opened_date #formats program opened_date
-    @program.opened_date.strftime("%A %d, %Y") if @program.opened_date
+    @program.opened_date.strftime("%B %d, %Y") if @program.opened_date
   end
 
   def closed_date #formats program closed_date
-    @program.closed_date.strftime("%A %d, %Y") if @program.closed_date
+    @program.closed_date.strftime("%B %d, %Y") if @program.closed_date
   end
 end

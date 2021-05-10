@@ -1,14 +1,17 @@
-<h1>Edit Task</h1>
-
-<%= render partial: 'layouts/errors', locals: {object: @task} %>
-
-<%= form_with model: [@task.user, @task] do |f| %>
-  <%= render partial: 'form', locals: {f: f} %>
-
-  <%= f.label :program_id, "What program is task related to: " %>
-  <%= f.collection_select :program_id, current_user.programs, :id, :name, {include_blank: true} %><br>
+<div class="container text-white text-center">
+  <h1>Edit Task</h1>
+  <%= content_for :errors do %>
+    <%= render partial: 'layouts/errors', locals: {object: @task} %>
+  <% end %>
   
-  <%= f.hidden_field :user_id %>
- 
-  <%= f.submit "Update Task" %>
-<% end %>
+  <%= form_with model: [@task.user, @task] do |f| %>
+    <%= render partial: 'form', locals: {f: f} %>
+  
+    <%= f.label :program_id, "What program is task related to: " %>
+    <%= f.collection_select :program_id, current_user.programs, :id, :name, {include_blank: true} %><br>
+    
+    <%= f.hidden_field :user_id %>
+   
+    <%= f.submit "Update Task" %>
+  <% end %>
+</div>

@@ -1,3 +1,13 @@
-<h1>First Time Employee Signup</h1>
-
-<%= render 'signup_form' %>
+<% content_for :login do %>
+  <div class="container">
+    <div class="align-bottom col-6 mx-auto">
+      <div id="login_box" class="row rounded button align-bottom" style="background-color:rgba(0, 0, 0, 0.3);">
+        <h3 class="text-center">New Employee Signup</h3>
+        <div class="text-center">
+          <%= render 'signup_form' %>
+          <%= render 'users/github_oauth' %>
+        </div>
+      </div>
+    </div>
+  </div> 
+<% end %>

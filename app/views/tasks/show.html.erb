@@ -1,7 +1,10 @@
-Title: <%= @task.title %><br>
-Content: <%= @task.content %><br>
-Program: <%= @task.program.name %><br>
-Urgency: <%= @task.urgency %><br>
-
-<%= link_to "Update Task", edit_user_task_path(current_user), class: "btn btn-sm btn-primary" %>
-<%= button_to "Delete Task", user_task_path(@task.user, @task), method: "delete", class: "btn btn-sm btn-primary" %>
+<div class="container text-white text-center mt-5">
+  <h4>Task:</h4>
+  <h5><%= @task.title %></h5>
+  <p><%= @task.content %></p>
+  Program: <%= @task.program.name %><br>
+  Urgency: <%= @task.urgency %><br>
+  
+  <%= link_to "Update Task", edit_user_task_path(current_user), class: "btn btn-sm btn-primary mt-3" %>
+  <%= button_to "Delete Task", user_task_path(@task.user, @task), method: "delete", class: "btn btn-sm btn-primary mt-3" %>
+</div>
