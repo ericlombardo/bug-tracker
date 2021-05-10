@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   # make sure user is logged in, nested route, and correct user
-  before_action :authenticate, :check_user
+  # before_action :authenticate, :check_user
 
   def index
     @tasks = User.find_by(id: params[:user_id]).tasks 

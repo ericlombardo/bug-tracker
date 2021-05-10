@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
-  before_action :authenticate, only: [:destroy]
-  before_action :already_logged_in, only: [:welcome, :client_new, :employee_new, :omniauth ]
+  # before_action :authenticate, only: [:destroy]
+  # before_action :already_logged_in, only: [:welcome, :client_new, :employee_new, :omniauth ]
 
   # welcome | client_new | employee_new 
   # actions above have nothing in them, don't need to be in controller

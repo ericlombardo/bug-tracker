@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <div class="container-fluid">
+        <div class="container-fluid">
       <%= render 'layouts/flash' %>
       <%= yield :errors %>
       
@@ -27,17 +27,16 @@
               <%= display_navbar %> <!--#dn(apphelper)-->
             </ul>
           </nav>
-        </ul>
-      </div>
+        </div>
+        <div class="container-fluid navbar_spacing">
+          <%= yield %>
+        </div>
       <% else %>
         <div class="bg-img img-fluid">
           <img src="<%= asset_path('logo_login.png')%>" class="rounded mx-auto d-block" alt="logo" width="300">
-          <%= yield :login %>
+          <%= yield %>
         </div>    
-      <% end %>
-      
-      
-      <%= yield %>
+      <% end %>      
     </div>
   </body>
 </html>
