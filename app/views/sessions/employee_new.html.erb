@@ -1,10 +1,10 @@
-<% content_for :login do %>
-  <div class="container text-center mb-3">
-    <h3>Employee Login</h3>
-    <%= form_with url: employee_login_path  do |f| %>  
-      <%= render partial: 'users/login_form', locals: {f: f, submit_text: "Login"} %>
-    <% end %>
-    <p>New Employee? <%= link_to "Signup Here", employee_signup_path %></p>
-    <%= render 'users/github_oauth' %>
-  </div> 
-<% end %>
+<!-- <% content_for :login do %> -->
+<!-- <% end %> -->
+<div class="container text-center mb-3">
+  <h3>Employee Login</h3>
+  <%= form_with url: employee_login_path  do |f| %>  
+    <%= render partial: 'users/login_form', locals: {f: f, submit_text: "Login"} %>
+  <% end %>
+  <p>New Employee? <%= link_to "Signup Here", employee_signup_path %></p>
+  <%= render 'users/github_oauth' %>
+</div> 
