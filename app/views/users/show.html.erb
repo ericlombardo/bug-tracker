@@ -1,10 +1,33 @@
-<h1><%= @user.name %></h1>
-<h4><%= "Role: #{@user.role}" %></h4>
+<div class="container text-center text-white">
+  <div class="align-content-center mt-3 text-white">
+    <h1><%= "#{@user.name}'s Profile" %></h1>
+  </div>
 
-<%= "Programs: #{@user.programs.count}" %><br>
-<%= "Bugs #{@user.bugs.count}" %>
-
-<h2>Top - Tasks</h2>
-<% @user.tasks.each do |t| %>
-  <%= render partial: 'user_info', locals: {t: t} %>
-<% end %>
+  <!-- Project Manager/Developers selects -->
+  <div class="row mt-3">
+    <div class="col-12">
+      <h4><%="Role: #{@user.role}" %></h4>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-4">
+      <h4><%= "Program Count: #{@user.programs.count}" %></h4>
+    </div>
+    <div class="col-4">
+      <h4><%= "Bug Count: #{@user.bugs.count}" %></h4>
+    </div>
+    <div class="col-4">
+      <h4><%= "Task Count: #{@user.tasks.count}" %></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="container text-white mt-3">
+      <h2>Urgent Tasks:</h2>
+      <% @user.tasks.urgent.each do |t| %>
+        <div class="card bg-secondary mt-3">
+          <%= render partial: 'user_info', locals: {t: t} %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
