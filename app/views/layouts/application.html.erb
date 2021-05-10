@@ -28,11 +28,12 @@
             </ul>
           </nav>
         </ul>
-      <% else %>
-      <div class="bg-img img-fluid">
-        <img src="<%= asset_path('logo_login.png')%>" class="rounded mx-auto d-block" alt="logo" width="300">
-        <%= yield :login %>
       </div>
+      <% else %>
+        <div class="bg-img img-fluid">
+          <img src="<%= asset_path('logo_login.png')%>" class="rounded mx-auto d-block" alt="logo" width="300">
+          <%= yield :login %>
+        </div>    
       <% end %>
       
       

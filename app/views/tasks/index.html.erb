@@ -1,6 +1,6 @@
-<h1>Task List</h1>
+<div class="container align-content-center text-white">
+  <h1>Task List</h1>
+  <%= render partial: 'tasks', locals: {tasks: @tasks} %>
+  <%= link_to "Make New Task", new_user_task_path(current_user), class: "btn btn-sm btn-primary button" %>
 
-<%= render partial: 'tasks', locals: {tasks: @tasks} %>
-
-<%= link_to "Make New Task", new_user_task_path(current_user), class: "btn btn-sm btn-primary" %>
-
+</div>  

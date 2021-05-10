@@ -1,19 +1,19 @@
 <li class="nav-item">
-  <%= link_to "Profile", user_path(current_user), class: "nav-link active" %>
+  <%= link_to "Profile", user_path(current_user), class: "nav-link active text-white" %>
 </li>
 <li class="nav-item">
-  <%= link_to "Programs", programs_path, class: "nav-link" %>
+  <%= link_to "Programs", programs_path, class: "nav-link text-white" %>
 </li>
 <li class="nav-item">
-  <%= link_to "My Programs", user_programs_path(current_user), class: "nav-link" %>
+  <%= link_to "My Programs", user_programs_path(current_user), class: "nav-link text-white" %>
 </li>
 <li class="nav-item">
-  <%= link_to "My Bugs", user_bugs_path(current_user), class: "nav-link" %>
+  <%= link_to "My Bugs", user_bugs_path(current_user), class: "nav-link text-white" %>
 </li>
 <li class="nav-item">
-  <%= link_to "My Tasks", user_tasks_path(current_user), class: "nav-link" %>
+  <%= link_to "My Tasks", user_tasks_path(current_user), class: "nav-link text-white" %>
 </li>
 <li class="nav-item">
-  <%= link_to "Edit Profile", edit_user_path(current_user), class: "nav-link" %>
+  <%= link_to "Edit Profile", edit_user_path(current_user), class: "nav-link text-white" %>
 </li>
 <%= render 'layouts/client_nav' %>
