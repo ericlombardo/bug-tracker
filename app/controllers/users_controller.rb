@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
   
   def client_new
+    binding.pry
     @user = User.new(role: "Client")
   end
 

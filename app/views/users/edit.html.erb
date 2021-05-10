@@ -1,4 +1,4 @@
-<form class="container text-center align-center white">  
+ 
   <h1>Edit Employee Info</h1>
   
   <%= content_for :errors do %>
@@ -6,19 +6,15 @@
   <% end %>
 
   <%= form_with model: @user do |f| %>
-    <div class="mb-3">
+
       <%= render partial: 'name_field', locals: {f: f} %>
-    </div>
-  
-    <div class="mb-3">
+
       <%= f.label :email %>
       <%= f.email_field :email, size: "45" %><br>
-    </div>
-    
-    <div class="mb-3 form-check">
+
       <%= render(partial: 'role_field', locals: {f: f}) if admin?%>
-    </div>
+
     
     <%= f.submit "Update Employee", class: "btn btn-primary" %>
   <% end %>
-</div>
+
