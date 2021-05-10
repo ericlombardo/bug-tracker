@@ -1,29 +1,37 @@
-<h1><%= "#{@bug.program.name}" %></h1>
-<h4><%= "Bug Id: #{@bug.id}"%></h4><br>
-
-<%= link_to "Update This Bug", edit_program_bug_path(@bug.program, @bug), class: "btn btn-primary" %>
-
-<h4>Overview: </h4>
-<%= @bug.overview %><br>
-
-<h4>Description: </h4>
-<%= @bug.description %><br>
-
-<h4>Status: </h4>
-<%= @bug.status %><br>
-
-<h4>Priority: </h4>
-<%= @bug.priority %><br>
-
-<h4>Type: </h4>
-<%= @bug.category %><br>
-
-<h4>Next Steps: </h4>
-<%= @bug.next_steps %><br>
-
-<h4>Notes: </h4>
-<%= @bug.notes %><br>
-
-<h4>Update For Client: </h4>
-<%= @bug.update_for_client %><br>
-
+<div class="container text-white text-center mt-5">
+  <h1><%= "#{@bug.program.name}" %></h1>
+  <h4><%= "Bug Id: #{@bug.id}"%></h4><br>
+  <div class="row">
+    <div class="col-6">
+      <h4>Overview: </h4>
+      <%= @bug.overview %><br>
+  
+      <h4>Description: </h4>
+      <%= @bug.description %><br>
+    </div>
+    <div class="col-6">
+      <h4>Status: </h4>
+      <%= @bug.status %><br>
+  
+      <h4>Priority: </h4>
+      <%= @bug.priority %><br>
+  
+      <h4>Type: </h4>
+      <%= @bug.category %><br>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-6">
+      <h4>Next Steps: </h4>
+    <%= @bug.next_steps %><br>
+  
+    <h4>Notes: </h4>
+    <%= @bug.notes %><br>
+    </div>
+    <div class="col-6">
+      <h4>Update For Client: </h4>
+      <%= @bug.update_for_client %><br>
+    </div>
+  </div>
+  <%= link_to "Update This Bug", edit_program_bug_path(@bug.program, @bug), class: "btn btn-primary mt-3 mb-3" %>
+</div>  
