@@ -1,6 +1,6 @@
 # Bug Tracker
 
-Put description here
+Bug tracker was designed to help companies keep track of their software bugs
 
 ## Installation
 
@@ -20,20 +20,17 @@ Put description here
     to make sure you don't upload your key and secret to github
   * If you assign your google key and secret the below constant names, everything will
     connect automatically 
-    GOOGLE_KEY=
-    GOOGLE_SECRET=
+    GOOGLE_CLIENT_ID==
+    GOOGLE_CLIENT_SECRET=
   * Likewise if you assign github key and secret the below constant names, evierthing will connect automatically
     GITHUB_KEY=
     GITHUB_SECRET=
 
 
 ## Build Status
-While Been There! Done That! is fully functional, there are features that I would like to incorporate in the future. I would like to include a a map that visually tracks what states you have been to as well as provide an option to click a state and get a read out of the state
+There were many bugs and I am currently working through them.
 
-## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/ericlombardo/been_there_done_that. 
-Please review the [Contributing Guidelines](https://github.com/ericlombardo/been_there_done_that/blob/master/CONTRIBUTING.md) to make sure everyone is following the proper formating.
 
 
 ## License
@@ -42,6 +39,6 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Been There! Done That! project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/ericlombardo/simply_give/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Been There! Done That! project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/ericlombardo/bug_tracker/blob/master/CODE_OF_CONDUCT.md).
 
 ## Attribution
