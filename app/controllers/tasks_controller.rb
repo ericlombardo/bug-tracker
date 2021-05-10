@@ -42,7 +42,7 @@ class TasksController < ApplicationController
 
   def check_user
     if params[:user_id].to_i != current_user.id
-      redirect_to user_tasks_path(current_user), danger: "These are your tasks"
+      redirect_to user_tasks_path(current_user), alert: "These are your tasks"
     end
   end
 end

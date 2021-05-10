@@ -13,7 +13,7 @@ class BugsController < ApplicationController
     if params[:program_id] && @program = Program.find_by(id: params[:program_id])
       @bug = @program.bugs.build(status: "pending")
     else
-      redirect_to programs_path, danger: "You must select a program before reporting a bug"
+      redirect_to programs_path, alert: "You must select a program before reporting a bug"
     end
   end
 
@@ -45,7 +45,7 @@ class BugsController < ApplicationController
     if @program = Program.find_by(id: params[:program_id])
       @bugs = @program.bugs
     else
-      redirect_to programs_path, danger: "Info for the program not found"
+      redirect_to programs_path, alert: "Info for the program not found"
     end
   end
 
@@ -58,7 +58,7 @@ class BugsController < ApplicationController
     if params[:user_id].to_i == current_user.id #
       assign_user_and_bugs #auab(.) sets @user and @bugs
     else
-      redirect_to user_bugs_path(current_user), danger: "These are your bugs"
+      redirect_to user_bugs_path(current_user), alert: "These are your bugs"
     end
   end
 end
