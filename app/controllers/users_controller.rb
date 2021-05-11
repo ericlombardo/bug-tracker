@@ -12,7 +12,6 @@ class UsersController < ApplicationController
   end
 
   def employee_new
-
     @user = User.new(role: "Developer")
   end
 

@@ -1,4 +1,4 @@
-<% content_for :login do %>
+<div class="container text-center">
   <h3>New Employee Signup</h3>
   
   <%= form_with model: @user do |f| %>  
@@ -14,4 +14,4 @@
     <%= f.hidden_field :role %>
   <% end %>
   <%= button_to 'Login with Github', '/auth/github' %>
-<% end %>
+</div>
