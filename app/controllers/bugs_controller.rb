@@ -1,5 +1,5 @@
 class BugsController < ApplicationController
-  before_action :authenticate # confirms user is logged in
+  # before_action :authenticate # confirms user is logged in
   
   def index
     if params[:program_id] # if 'program bugs'

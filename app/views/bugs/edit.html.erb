@@ -1,12 +1,15 @@
-<h1><%= "Update Bug ##{@bug.id} for #{@bug.program.name}" %></h1>
-
-<%= render partial: 'layouts/errors', locals: {object: @bug} %>
-
-<%= form_with model: ([@bug.program, @bug]) do |f| %>  
+<div class="container text-white text-center">
+  <h1><%= "Update Bug ##{@bug.id} for #{@bug.program.name}" %></h1>
+  <%= content_for :errors do %>
+    <%= render partial: 'layouts/errors', locals: {object: @bug} %>
+  <% end %>
   
-  <%= render partial: 'status_field', locals: {f: f} %>
-  <%= render partial: 'form', locals: {f: f} %>
-  <%= render partial: 'client_update_field', locals: {f: f} %>
-  
-  <%= f.submit "Update Bug" %>
-<% end %>
+  <%= form_with model: ([@bug.program, @bug]) do |f| %>  
+    
+    <%= render partial: 'status_field', locals: {f: f} %>
+    <%= render partial: 'form', locals: {f: f} %>
+    <%= render partial: 'client_update_field', locals: {f: f} %><br>
+    
+    <%= f.submit "Update Bug" %>
+  <% end %>
+</div>

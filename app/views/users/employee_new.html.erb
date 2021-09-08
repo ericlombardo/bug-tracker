@@ -1,3 +1,17 @@
-<h1>First Time Employee Signup</h1>
-
-<%= render 'signup_form' %>
+<div class="container text-center">
+  <h3>New Employee Signup</h3>
+  
+  <%= form_with model: @user do |f| %>  
+    <%= f.label :name %>  
+    <%= f.text_field :name, required: true %><br>
+    <%= f.label :email %> 
+    <%= f.email_field :email, {required: true} %>
+  
+    <%= f.label :password %>
+    <%= f.password_field :password, required: true %>
+  
+    <%= f.submit "Signup Now", class: "btn btn-sm btn-primary " %>
+    <%= f.hidden_field :role %>
+  <% end %>
+  <%= button_to 'Login with Github', '/auth/github' %>
+</div>

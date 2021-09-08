@@ -1,7 +1,11 @@
-<%= f.label :email %> 
-<%= f.email_field :email, {required: true} %>
-<br>
-<%= f.label :password %>
-<%= f.password_field :password, required: true %>
-<br>
-<%= f.submit submit_text, class: "btn btn-sm btn-primary " %>
+<div class="mt-3">
+  <%= f.label :email %> 
+  <%= f.email_field :email, {required: true} %>
+</div>
+<div class="mt-3">
+  <%= f.label :password %>
+  <%= f.password_field :password, required: true %>
+</div>
+<div class="mt-3">
+  <%= f.submit submit_text, class: "btn btn-sm btn-primary " %>
+</div>

@@ -1,5 +1,5 @@
 class ProgramsController < ApplicationController
-  before_action :authenticate # makes sure user is logged in
+  # before_action :authenticate # makes sure user is logged in
   
   def index
     nested_user? ? (show_user_programs) : (@programs = Program.supported) #nu?, sup(.)
