@@ -4447,7 +4447,7 @@
     "object-assign" "^4.0.1"
     "read-pkg-up" "^1.0.1"
     "redent" "^1.0.0"
-    "trim-newlines" "^1.0.0"
+    "trim-newlines" "^3.0.1"
 
 "merge-descriptors@1.0.1":
   "integrity" "sha1-sAqqVW3YtEVoFQ7J0blT8/kMu2E="
@@ -7279,8 +7279,8 @@
     "psl" "^1.1.28"
     "punycode" "^2.1.1"
 
-"trim-newlines@^1.0.0":
-  "version" "1.0.0"
+"trim-newlines@^3.0.1":
+  "version" "3.0.1"
 
 "true-case-path@^1.0.2":
   "integrity" "sha512-m6s2OdQe5wgpFMC+pAJ+q9djG82O2jcHPOI6RNg1yy9rCYR+WD6Nbpl32fDpfC56nirdRy+opFa/Vk7HYhqaew=="
