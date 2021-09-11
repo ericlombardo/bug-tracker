@@ -63,6 +63,7 @@ class ProgramsController < ApplicationController
   def get_employees
     @devs = User.get_devs # collect all users where role == "dev"
     @prj_managers = User.get_prj_managers # collect all users where role == "prj_manager"
+    @admins = User.get_admins # collect all users where role == "admin"
   end
 
   def no_employees_assigned # check if no values for employee in params

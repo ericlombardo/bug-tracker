@@ -16,7 +16,8 @@ class User < ApplicationRecord
   
   # scope methods
   scope :get_devs, -> {where(role: "Developer")} 
-  scope :get_prj_managers, -> {where(role: "Project Manager")} 
+  scope :get_prj_managers, -> {where(role: "Project Manager")}
+  scope :get_admins, -> {where(role: "Admin")} 
 
 
   private ##################################################################
