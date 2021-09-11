@@ -25,6 +25,7 @@
       <h2>Urgent Tasks:</h2>
       <% @user.tasks.urgent.each do |t| %>
         <div class="card bg-secondary mt-3">
+          <% binding.pry %>
           <%= render partial: 'user_info', locals: {t: t} %>
         </div>
       <% end %>
