@@ -1,7 +1,17 @@
 <div class="container text-white text-center mt-5">
   <%= render partial: 'bug_title', locals: {title: choose_title(@program, @user)} %>
   
-  <%= render @bugs %> 
+  <div class="container mt-3">
+    <div class="container">
+      <% @bugs.each_slice(3) do |(b1, b2, b3)| %>
+        <div class="row h-100">
+          <div class="col-md-4 "><%= render(partial: 'bug', locals: {bug: b1}) if b1 %></div>
+          <div class="col-md-4 "><%= render(partial: 'bug', locals: {bug: b2}) if b2%></div>
+          <div class="col-md-4 "><%= render(partial: 'bug', locals: {bug: b3}) if b3%></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
   
   <%= link_to("Report Bug for #{@program.name}", new_program_bug_path(@program), class: "btn btn-sm btn-primary") if @program %>
 </div>
