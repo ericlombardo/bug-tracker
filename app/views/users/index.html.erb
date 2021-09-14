@@ -1,5 +1,5 @@
-<div class="container text-white">
-  <h3>Employees:</h3>
+<div class="container row justify-content-center text-white text-center">
+  <h3 class="p-2">Employees:</h3>
     <%= form_tag users_search_path do %>
       <%= text_field_tag :query %> <!-- create partail that renders search bar-->
       <%= button_tag "Search", class: "btn btn-sm btn-primary" %>
