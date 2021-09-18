@@ -21,10 +21,10 @@
     </div>
   </div>
   <div class="row">
-    <div class="container text-white mt-3">
+    <div class="container row justify-content-center text-white mt-3">
       <h2>Urgent Tasks:</h2>
       <% @user.tasks.urgent.each do |t| %>
-        <div class="card bg-secondary mt-3">
+        <div class="card bg-secondary mt-3 col-8">
           <%= render partial: 'user_info', locals: {t: t} %>
         </div>
       <% end %>
