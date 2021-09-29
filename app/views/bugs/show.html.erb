@@ -1,6 +1,7 @@
 <div class="container text-white text-center mt-5">
   <h1><%= "#{@bug.program.name}" %></h1>
   <h4><%= "Bug Id: #{@bug.id}"%></h4><br>
+  <% binding.pry %>
   <%= render partial: "show_client", locals: {bug: @bug} %>
-  <%= link_to "Update This Bug", edit_program_bug_path(@bug.program, @bug), class: "btn btn-primary mt-3 mb-3" %>
+  <%= render partial: "show_employee", locals: {bug: @bug} %>
 </div>  
