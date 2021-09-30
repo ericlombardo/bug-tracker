@@ -9,6 +9,11 @@ class ProgramsController < ApplicationController
     @program = Program.find_by(id: params[:id])
     @bugs = @program.get_all_bugs #gab(ProgramModel) 
     #=> {active: [instances], pending: [instances], closed: [instances]}
+    
+    # goes directly to program bugs if client 
+    redirect_to program_bugs_url(@program) if current_user.role === "Client"
+
+
   end
 
   def new
