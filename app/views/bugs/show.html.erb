@@ -1,7 +1,7 @@
 <div class="container text-white text-center mt-5">
   <h1><%= "#{@bug.program.name}" %></h1>
   <h4><%= "Bug Id: #{@bug.id}"%></h4><br>
-  <% binding.pry %>
-  <%= render partial: "show_client", locals: {bug: @bug} %>
-  <%= render partial: "show_employee", locals: {bug: @bug} %>
+  
+  <%= render partial: "show_client", locals: {bug: @bug} if current_user.role === "Client" %>
+  <%= render partial: "show_employee", locals: {bug: @bug} if current_user.role != "Client" %>
 </div>  
