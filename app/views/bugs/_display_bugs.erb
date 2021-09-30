@@ -1,0 +1,13 @@
+
+<% if !bugs.empty? %>
+  <h4><%= status.to_s.capitalize %> Bugs</h4>
+
+  <% bugs.each_slice(3) do |(b1, b2, b3)| %>
+    <div class="row h-100">
+      <div class="col-md-4 "><%= render(partial: 'bug', locals: {bug: b1}) if b1 %></div>
+      <div class="col-md-4 "><%= render(partial: 'bug', locals: {bug: b2}) if b2%></div>
+      <div class="col-md-4 "><%= render(partial: 'bug', locals: {bug: b3}) if b3%></div>
+    </div>
+  <% end %>
+
+<% end %>
