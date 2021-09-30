@@ -43,7 +43,7 @@ class BugsController < ApplicationController
 
   def assign_program_and_bugs # assign @bugs and @program if program found, redirect if not
     if @program = Program.find_by(id: params[:program_id])
-      @bugs = @program.bugs
+      @bugs = get_all_bugs(@program)
     else
       redirect_to programs_path, alert: "Info for the program not found"
     end

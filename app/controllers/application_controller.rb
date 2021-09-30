@@ -28,4 +28,13 @@ class ApplicationController < ActionController::Base
     flash.alert = "Invalid Username or Password. Please try again"
     redirect_to root_path  
   end
+
+  def get_all_bugs(program)
+    bugs = {
+      active: program.bugs.where("status == ?", "active"),
+      pending: program.bugs.where("status == ?", "pending"),
+      closed: program.bugs.where("status == ?", "closed")
+    }
+  end
+
 end

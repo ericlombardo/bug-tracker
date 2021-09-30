@@ -7,7 +7,7 @@ class ProgramsController < ApplicationController
 
   def show 
     @program = Program.find_by(id: params[:id])
-    @bugs = @program.get_all_bugs #gab(ProgramModel) 
+    @bugs = get_all_bugs(@program) #gab(application_controller) 
     #=> {active: [instances], pending: [instances], closed: [instances]}
     
     # goes directly to program bugs if client 
