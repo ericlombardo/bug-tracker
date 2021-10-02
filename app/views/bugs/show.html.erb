@@ -5,5 +5,5 @@
   <%= render partial: "show_client", locals: {bug: @bug} if current_user.role === "Client" %>
   <%= render partial: "show_employee", locals: {bug: @bug} if current_user.role != "Client" %>
 
-  <%= link_to "Back", :back, class: "btn btn-sm btn-primary mt-5"  %>
+  <%= link_to "Back", :back, class: "btn btn-sm btn-primary mt-5" if current_user.role === "Client"  %>
 </div>  
