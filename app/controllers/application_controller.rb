@@ -1,3 +1,4 @@
+
 class ApplicationController < ActionController::Base
   include ApplicationHelper # allows access to each helper file listed
   include ProgramsHelper
