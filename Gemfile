@@ -26,7 +26,7 @@ gem "actionpack", ">= 6.1.4.1"
 
 
 # gem for charts
-gem 'chartkick', '~> 3.4'
+gem 'chartkick'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
